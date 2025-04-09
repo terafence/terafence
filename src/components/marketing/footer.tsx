@@ -183,7 +183,7 @@ const Footer: React.FC = () => {
               <ul className="space-y-4 text-sm">
                 <li className="flex items-start">
                   <MapPin className="h-5 w-5 text-primary mr-3 mt-0.5 flex-shrink-0" />
-                  <span className="text-neutral">Terafence Private Limited, 209, Suncity Success Tower, Sector-65, Gurgaon-122 018, Haryana, India</span>
+                  <span className="text-neutral">Terafence Private Limited, 209, Suncity Success Tower, Sector-65, Gurgaon-122005, Haryana, India</span>
                 </li>
                 <li className="flex items-center">
                   <Mail className="h-5 w-5 text-primary mr-3 flex-shrink-0" />

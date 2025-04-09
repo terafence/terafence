@@ -54,7 +54,7 @@ export default function MapAddress() {
           >
             <h3 className="text-2xl font-bold text-blue-700 mb-6 flex items-center gap-2">
               <Building className="h-6 w-6" />
-              &nbsp; Terafence USA
+              &nbsp; Terafence Private Limited
             </h3>
             <div className="space-y-6 text-gray-700">
               <div className="flex items-start gap-4">
@@ -62,9 +62,9 @@ export default function MapAddress() {
                   <MapPin className="h-5 w-5" />
                 </div>
                 <p className="leading-relaxed">
-                  12788 ROYAL OAKS <br />
-                  LN FARMERS BRANCH <br />
-                  TX 75234
+                  209, Suncity Success Tower,
+                  Sector-65 <br />
+                  Gurugram, Haryana-122005, India
                 </p>
               </div>
 
@@ -75,10 +75,10 @@ export default function MapAddress() {
                 <p>
                   <span className="font-medium">Email: </span>
                   <a
-                    href="mailto:info@terafence.us"
+                    href="mailto:info@terafence.in"
                     className="text-blue-600 hover:underline"
                   >
-                    info@terafence.us
+                    info@terafence.in
                   </a>
                 </p>
               </div>
@@ -89,7 +89,7 @@ export default function MapAddress() {
                 </div>
                 <p>
                   <span className="font-medium">Timings: </span>
-                  09 AM to 06 PM (Monday to Friday)
+                  10 AM to 07 PM (Monday to Friday)
                 </p>
               </div>
 
@@ -127,14 +127,14 @@ export default function MapAddress() {
             className="h-[450px] rounded-xl overflow-hidden shadow-lg border border-gray-200"
           >
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3349.336805825529!2d-96.93399232433151!3d32.91569857360604!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864c2871fccaeb23%3A0xe72b5cf9d1e3a925!2s12788%20Royal%20Oaks%20Ln%2C%20Farmers%20Branch%2C%20TX%2075234%2C%20USA!5e0!3m2!1sen!2sin!4v1743150746513!5m2!1sen!2sin" 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d620.3734591391601!2d77.07001012825071!3d28.40835749821255!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d23d44fbfa2cf%3A0x7ca41bccd7a459b7!2sTerafence%20Private%20Limited!5e0!3m2!1sen!2sin!4v1744196396605!5m2!1sen!2sin"
               width="100%"
               height="100%"
               style={{ border: 0 }}
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Terafence US Location"
+              title="Terafence Private Limited"
               className="w-full h-full"
             />
           </motion.div>
