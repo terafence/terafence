@@ -292,7 +292,7 @@ export default function ProductPage() {
                       whileHover={{ scale: 1.03 }}
                       whileTap={{ scale: 0.97 }}
                       onClick={() =>
-                        (window.location.href = "mailto:info@terafence.us")
+                        (window.location.href = "mailto:info@terafence.in")
                       }
                     >
                       Get Started
@@ -355,7 +355,7 @@ export default function ProductPage() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() =>
-                    (window.location.href = "mailto:info@terafence.us")
+                    (window.location.href = "mailto:info@terafence.in")
                   }
                 >
                   Get a Quote
@@ -477,7 +477,7 @@ export default function ProductPage() {
                       whileHover={{ scale: 1.05, x: 5 }}
                       whileTap={{ scale: 0.97 }}
                       onClick={() =>
-                        (window.location.href = "mailto:info@terafence.us")
+                        (window.location.href = "mailto:info@terafence.in")
                       }
                     >
                       Learn More
@@ -726,7 +726,7 @@ export default function ProductPage() {
                       }}
                       whileTap={{ scale: 0.97 }}
                       onClick={() =>
-                        (window.location.href = "mailto:support@terafence.us")
+                        (window.location.href = "mailto:support@terafence.in")
                       }
                     >
                       GET SUPPORT
@@ -767,7 +767,7 @@ export default function ProductPage() {
                   size="lg"
                   className="bg-blue-600 hover:bg-lime-700 px-10 py-4 h-auto text-lg font-semibold shadow-lg hover:shadow-xl transition-all"
                   onClick={() =>
-                    (window.location.href = "mailto:info@terafence.us")
+                    (window.location.href = "mailto:info@terafence.in")
                   }
                 >
                   Request a PoC
