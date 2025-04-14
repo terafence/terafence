@@ -1,0 +1,8 @@
+[
+    {
+      "source": "/webmail",
+      "destination": "https://mail.terafence.in/webmail",
+      "permanent": true
+    }
+  ]
+  
