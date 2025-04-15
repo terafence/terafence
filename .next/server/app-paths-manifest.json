@@ -1,6 +1,17 @@
 {
-  "/devices/page": "app/devices/page.js",
+  "/api/contact/route": "app/api/contact/route.js",
+  "/about/story/page": "app/about/story/page.js",
+  "/about/team/page": "app/about/team/page.js",
+  "/contact/contact/page": "app/contact/contact/page.js",
   "/download/page": "app/download/page.js",
+  "/devices/page": "app/devices/page.js",
+  "/cookie/page": "app/cookie/page.js",
+  "/privacy/page": "app/privacy/page.js",
+  "/solutions/page": "app/solutions/page.js",
+  "/terms/page": "app/terms/page.js",
+  "/usecases/page": "app/usecases/page.js",
+  "/technology/page": "app/technology/page.js",
   "/_not-found/page": "app/_not-found/page.js",
+  "/features/page": "app/features/page.js",
   "/(marketing)/page": "app/(marketing)/page.js"
 }

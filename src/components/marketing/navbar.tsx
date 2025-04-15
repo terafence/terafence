@@ -49,27 +49,27 @@ const NAV_LINKS: NavLink[] = [
     href: "/products",
     subMenu: [
       {
-        name: "121",
+        name: "TFG 121",
         href: "/devices",
         description: "Advanced security solution",
       },
       {
-        name: "URP",
+        name: "TFG URP",
         href: "/devices",
         description: "Unified protection platform",
       },
       {
-        name: "BSG",
+        name: "TFG BSG",
         href: "/devices",
         description: "Business security gateway",
       },
       {
-        name: "MBSecure+",
+        name: "TFG MBSecure+",
         href: "/devices",
         description: "Enhanced protection system",
       },
       {
-        name: "VSecure",
+        name: "TFG VSecure",
         href: "/devices",
         description: "Virtual security environment",
       },
