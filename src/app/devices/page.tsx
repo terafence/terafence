@@ -6,21 +6,21 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ChevronRight,
-  Download,
+  // Download,
   ExternalLink,
   ArrowRight,
   Check,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
+// import {
+//   Table,
+//   TableBody,
+//   TableCell,
+//   TableHead,
+//   TableHeader,
+//   TableRow,
+// } from "@/components/ui/table";
 import Navbar from "@/components/marketing/navbar";
 import Footer from "@/components/marketing/footer";
 import Wrapper from "@/components/global/wrapper";
@@ -70,13 +70,13 @@ export default function ProductPage() {
   }, []);
 
   // Datasheet download mapping
-  const datasheetLinks: { [key: string]: string } = {
-    "121": "/downloads/datasheet/121.pdf",
-    "1-URP": "/downloads/datasheet/URP.pdf",
-    BSG: "/downloads/datasheet/BSG.pdf",
-    VSecure: "/downloads/datasheet/VSecure.pdf",
-    "MBSecure+": "/downloads/datasheet/MBSecure+.pdf",
-  };
+  // const datasheetLinks: { [key: string]: string } = {
+  //   "121": "/downloads/datasheet/121.pdf",
+  //   "1-URP": "/downloads/datasheet/URP.pdf",
+  //   BSG: "/downloads/datasheet/BSG.pdf",
+  //   VSecure: "/downloads/datasheet/VSecure.pdf",
+  //   "MBSecure+": "/downloads/datasheet/MBSecure+.pdf",
+  // };
 
   // Transition variants for animations
   const pageTransition = {
@@ -299,7 +299,7 @@ export default function ProductPage() {
                       <ArrowRight className="h-4 w-4" />
                     </motion.button>
 
-                    <motion.button
+                    {/* <motion.button
                       className="inline-flex items-center justify-center gap-2 bg-white text-gray-700 border border-gray-200 font-medium px-6 py-3 rounded-full shadow-sm hover:shadow-md transition-all duration-300 hover:bg-gray-50"
                       whileHover={{ scale: 1.03 }}
                       whileTap={{ scale: 0.97 }}
@@ -312,7 +312,7 @@ export default function ProductPage() {
                     >
                       <Download className="h-4 w-4" />
                       Download Datasheet
-                    </motion.button>
+                    </motion.button> */}
                   </div>
                 </motion.div>
               </div>
@@ -326,9 +326,9 @@ export default function ProductPage() {
                 <nav className="flex items-center overflow-x-auto hide-scrollbar py-2 gap-8 text-sm font-medium">
                   {[
                     { id: "keyFeatures", label: "Key Features" },
-                    { id: "protocols", label: "Protocols" },
-                    { id: "techSpecs", label: "Tech Specs" },
-                    { id: "resources", label: "Resources" },
+                    // { id: "protocols", label: "Protocols" },
+                    // { id: "techSpecs", label: "Tech Specs" },
+                    // { id: "resources", label: "Resources" },
                     { id: "support", label: "Support" },
                   ].map((section) => (
                     <a
@@ -490,7 +490,7 @@ export default function ProductPage() {
           </section>
 
           {/* Supported Protocols Section */}
-          <section
+          {/* <section
             id="protocols"
             className="py-16 border-t scroll-mt-40"
           >
@@ -533,10 +533,10 @@ export default function ProductPage() {
                 </div>
               </motion.div>
             </Wrapper>
-          </section>
+          </section> */}
 
           {/* Tech Specs Section */}
-          <section
+          {/* <section
             id="techSpecs"
             className="py-16 border-t scroll-mt-40"
           >
@@ -621,10 +621,10 @@ export default function ProductPage() {
                 </div>
               </motion.div>
             </Wrapper>
-          </section>
+          </section> */}
 
           {/* Resources Section */}
-          <section
+          {/* <section
             id="resources"
             className="py-16 border-t scroll-mt-40"
           >
@@ -683,7 +683,7 @@ export default function ProductPage() {
                 </div>
               </motion.div>
             </Wrapper>
-          </section>
+          </section> */}
 
           {/* Support Section */}
           <section
@@ -714,7 +714,7 @@ export default function ProductPage() {
                       Smooth Sailing Guaranteed
                     </h2>
                     <p className="text-lg text-gray-700 mb-10 leading-relaxed">
-                      Our dedicated support team is available 24/7 to help you
+                      Our dedicated support team is available to help you
                       with any questions or issues you may have. We&apos;re
                       committed to your success.
                     </p>
@@ -738,14 +738,14 @@ export default function ProductPage() {
                         <Check className="h-4 w-4 text-green-500 mr-1" />
                         24/7 Support
                       </span>
-                      <span className="flex items-center">
+                      {/* <span className="flex items-center">
                         <Check className="h-4 w-4 text-green-500 mr-1" />
                         99.9% Uptime
                       </span>
                       <span className="flex items-center">
                         <Check className="h-4 w-4 text-green-500 mr-1" />
                         Enterprise SLA
-                      </span>
+                      </span> */}
                     </div>
                   </motion.div>
                 </div>
