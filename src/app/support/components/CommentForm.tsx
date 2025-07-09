@@ -10,9 +10,9 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
-import { addComment } from '../lib/googleSheets';
+// import { addComment } from '../lib/googleSheets';
 import { uploadMultipleFiles, FileInfo, formatFilesForStorage } from '../lib/fileUpload';
-import { sendTicketUpdateNotification } from '../lib/email';
+// import { sendTicketUpdateNotification } from '../lib/email';
 
 interface CommentFormProps {
   ticketId: string;
@@ -96,21 +96,21 @@ export default function CommentForm({ ticketId, userEmail, subject, onCommentAdd
         attachments: formatFilesForStorage(uploadedFiles),
       };
 
-      const success = await addComment(commentData);
+      // const success = await addComment(commentData);
 
-      if (!success) {
-        throw new Error('Failed to add comment');
-      }
+      // if (!success) {
+      //   throw new Error('Failed to add comment');
+      // }
 
       // Send notification
-      await sendTicketUpdateNotification({
-        ticketId,
-        userEmail,
-        subject,
-        updateType: 'comment',
-        message: comment.trim(),
-        updatedBy: userEmail,
-      });
+      // await sendTicketUpdateNotification({
+      //   ticketId,
+      //   userEmail,
+      //   subject,
+      //   updateType: 'comment',
+      //   message: comment.trim(),
+      //   updatedBy: userEmail,
+      // });
 
       // Clear form
       setComment('');
