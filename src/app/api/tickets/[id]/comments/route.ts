@@ -1,11 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { google } from 'googleapis'
 
-type RouteParams = {
+type RouteParams = Awaited<{
   params: {
     id: string
   }
-}
+}>
 
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
 const SHEET_ID = process.env.GOOGLE_SHEET_ID!
@@ -39,9 +39,6 @@ export async function GET(
     return NextResponse.json({ comments })
   } catch (error) {
     console.error('Error fetching comments:', error)
-    return NextResponse.json(
-      { error: 'Failed to fetch comments' },
-      { status: 500 }
-    )
+    return NextResponse.json({ error: 'Failed to fetch comments' }, { status: 500 })
   }
 }
