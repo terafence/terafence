@@ -41,14 +41,13 @@ const NAV_LINKS: NavLink[] = [
     href: "/technology",
   },
   {
+    name: "Partners",
+    href: "/partners",
+  },
+  {
     name: "Blogs",
     href: "/blog",
   },
-
-  // {
-  //   name: "Features",
-  //   href: "/features",
-  // },
   {
     name: "Products",
     href: "/products",
@@ -129,7 +128,6 @@ const NAV_LINKS: NavLink[] = [
     name: "Downloads",
     href: "/download",
   },
-  
   {
     name: "Contact",
     href: "/contact/contact",
@@ -232,7 +230,7 @@ const MobileMenu = () => {
   }, [isOpen]);
 
   return (
-    <div className="sticky top-0 z-50 w-full border-b bg-background lg:hidden">
+    <div className="lg:hidden">
       <button
         id="mobile-menu-button"
         className="flex h-10 w-10 items-center justify-center rounded-md border border-gray-200"
@@ -249,73 +247,77 @@ const MobileMenu = () => {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed left-0 right-0 top-16 z-50 overflow-y-auto bg-white pb-6 shadow-lg"
-            style={{ maxHeight: "calc(100vh - 4rem)" }}
+            className="fixed left-0 right-0 top-20 z-50 bg-white shadow-lg overflow-hidden"
+            style={{ maxHeight: "calc(100vh - 5rem)" }}
           >
-            <div className="space-y-1 p-4">
-              {NAV_LINKS.map((link, index) => (
-                <div key={index} className="border-b border-gray-100 py-2">
-                  {link.subMenu ? (
-                    <div>
-                      <button
-                        className="flex w-full items-center justify-between py-2 text-sm font-medium"
-                        onClick={() =>
-                          setOpenSubmenu(
-                            openSubmenu === link.name ? null : link.name
-                          )
-                        }
+            <div className="overflow-y-auto h-full">
+              <div className="space-y-1 p-4">
+                {NAV_LINKS.map((link, index) => (
+                  <div key={index} className="border-b border-gray-100 py-2">
+                    {link.subMenu ? (
+                      <div>
+                        <button
+                          className="flex w-full items-center justify-between py-2 text-sm font-medium"
+                          onClick={() =>
+                            setOpenSubmenu(
+                              openSubmenu === link.name ? null : link.name
+                            )
+                          }
+                        >
+                          {link.name}
+                          <ChevronDown
+                            className={`h-4 w-4 transition-transform ${
+                              openSubmenu === link.name ? "rotate-180" : ""
+                            }`}
+                          />
+                        </button>
+                        <AnimatePresence>
+                          {openSubmenu === link.name && (
+                            <motion.div
+                              initial={{ opacity: 0, height: 0 }}
+                              animate={{ opacity: 1, height: "auto" }}
+                              exit={{ opacity: 0, height: 0 }}
+                              transition={{ duration: 0.2 }}
+                              className="overflow-hidden"
+                            >
+                              <div className="ml-4 mt-2 space-y-2">
+                                {link.subMenu.map((subLink, idx) => (
+                                  <Link
+                                    key={idx}
+                                    href={subLink.href}
+                                    className="block py-2 pl-3 text-sm text-gray-600 hover:text-primary"
+                                    onClick={() => setIsOpen(false)}
+                                  >
+                                    {subLink.name}
+                                  </Link>
+                                ))}
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    ) : (
+                      <Link
+                        href={link.href}
+                        className="block py-2 text-sm font-medium hover:text-primary"
+                        onClick={() => setIsOpen(false)}
                       >
                         {link.name}
-                        <ChevronDown
-                          className={`h-4 w-4 transition-transform ${
-                            openSubmenu === link.name ? "rotate-180" : ""
-                          }`}
-                        />
-                      </button>
-                      <AnimatePresence>
-                        {openSubmenu === link.name && (
-                          <motion.div
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: "auto" }}
-                            exit={{ opacity: 0, height: 0 }}
-                            transition={{ duration: 0.2 }}
-                            className="ml-4 mt-2 space-y-2"
-                          >
-                            {link.subMenu.map((subLink, idx) => (
-                              <Link
-                                key={idx}
-                                href={subLink.href}
-                                className="block py-2 pl-3 text-sm text-gray-600 hover:text-primary"
-                                onClick={() => setIsOpen(false)}
-                              >
-                                {subLink.name}
-                              </Link>
-                            ))}
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </div>
-                  ) : (
-                    <Link
-                      href={link.href}
-                      className="block py-2 text-sm font-medium hover:text-primary"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      {link.name}
-                    </Link>
-                  )}
+                      </Link>
+                    )}
+                  </div>
+                ))}
+                <div className="mt-6 pt-2">
+                  <Button
+                    variant="blue"
+                    className="w-full"
+                    onClick={() =>
+                      (window.location.href = "mailto:info@terafence.in")
+                    } 
+                  >
+                    Get Started
+                  </Button>
                 </div>
-              ))}
-              <div className="mt-6 pt-2">
-                <Button
-                  variant="blue"
-                  className="w-full"
-                  onClick={() =>
-                    (window.location.href = "mailto:info@terafence.in")
-                  } 
-                >
-                  Get Started
-                </Button>
               </div>
             </div>
           </motion.div>
@@ -338,7 +340,7 @@ const Navbar = () => {
 
   return (
     <header
-      className={`sticky top-0 w-full h-16 bg-background/80 backdrop-blur-sm z-50 transition-all ${
+      className={`sticky top-0 w-full h-20 bg-background/80 backdrop-blur-sm z-50 transition-all ${
         scrolled ? "shadow-md" : ""
       }`}
     >
@@ -362,7 +364,6 @@ const Navbar = () => {
             ))}
           </div>
           <div className="flex items-center gap-4">
-            {/* <Link href="/supports" className="hidden lg:block"> */}
             <Link href="/supports" className="hidden lg:block">
               <Button variant="blue" className="px-6">
                 Get Support
