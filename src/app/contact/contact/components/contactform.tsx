@@ -169,7 +169,7 @@ export default function ContactForm() {
   };
 
   const inputVariants = {
-    focus: { scale: 1.01, transition: { type: "spring", stiffness: 300 } },
+    focus: { scale: 1.01, transition: { type: "spring" as const, stiffness: 300 } },
   };
 
   const fadeInUpVariants = {
