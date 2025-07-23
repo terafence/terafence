@@ -16,7 +16,7 @@ interface MetadataProps {
 }
 
 export const generateMetadata = ({
-    title = `Terafence Private Limited India | Made in India Data Diode Solutions & Cybersecurity | Secure Gateway Technology`,
+    title = `Terafence Private Limited | Made in India Data Diode Solutions & Cybersecurity | FPGA Data Diode`,
     description = `Terafence Private Limited is India's leading Data Diode manufacturer, offering advanced cybersecurity solutions for critical infrastructure. Protect real-time OT data with our hardware-based, FPGA-powered Data Diode technology. Secure one-way data transfer for high-security applications. With patent-protected solutions, Terafence ensures impenetrable protection for IoT and OT devices. Made in India. Trusted by industries for data diode security and network defense.
  `,
     icons = [
