@@ -323,7 +323,7 @@ export default function OTPLogin() {
       y: 0,
       opacity: 1,
       transition: {
-        type: "spring",
+        type: "spring" as const,
         stiffness: 300,
         damping: 24,
       },
@@ -342,7 +342,7 @@ export default function OTPLogin() {
     visible: {
       scale: 1,
       opacity: 1,
-      transition: { type: "spring", stiffness: 200, damping: 15 },
+      transition: { type: "spring" as const, stiffness: 200, damping: 15 },
     },
   };
 
