@@ -318,7 +318,7 @@ export default function OTPLogin() {
   };
 
   const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
+    hidden: { y: 20, opacity: 0 } as const,
     visible: {
       y: 0,
       opacity: 1,
