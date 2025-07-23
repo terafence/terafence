@@ -331,7 +331,7 @@ export default function OTPLogin() {
   };
 
   const pageTransition = {
-    type: "tween",
+    type: "tween" as const,
     ease: "anticipate" as const,
     duration: 0.5,
   };
