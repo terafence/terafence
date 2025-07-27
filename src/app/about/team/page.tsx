@@ -24,7 +24,7 @@ export default function TeamPage() {
   const teamMembers: TeamMember[] = [
     {
       name: "Chandra Shekhar Misra",
-      role: "CEO and Founder",
+      role: "Founder and CEO  ",
       image: "/images/team/csm.png",
       linkedin: "https://www.linkedin.com/in/chandra-shekhar-misra-46949645/",
       background: "Technology Innovation Strategist",

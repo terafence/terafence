@@ -17,184 +17,7 @@ import {
 import Navbar from "@/components/marketing/navbar";
 import Footer from "@/components/marketing/footer";
 import Wrapper from "@/components/global/wrapper";
-
-interface BlogPost {
-  id: number;
-  title: string;
-  excerpt: string;
-  category: string;
-  readTime: string;
-  publishDate: string;
-  views: string;
-  featured: boolean;
-  tags: string[];
-  slug: string;
-}
-
-const blogPosts: BlogPost[] = [
-  {
-    id: 11,
-    title: "What is a Data Diode?",
-    excerpt:
-      "Exploring critical cybersecurity vulnerabilities in modern supply chains and implementing robust defense strategies to protect against sophisticated attacks.",
-    category: "Data Diode",
-    readTime: "10 min read",
-    publishDate: "2024-01-10",
-    views: "45.3K",
-    featured: true,
-    tags: ["Core Technology", "Working Principle"],
-    slug: "cybersecurity-challenges-supply-chain",
-  },
-  {
-    id: 2,
-    title: "Securing Syslog Transfer from OT to IT",
-    excerpt:
-      "Best practices for secure syslog data transfer between operational technology and information technology networks while maintaining data integrity and compliance.",
-    category: "OT Security",
-    readTime: "6 min read",
-    publishDate: "2024-01-12",
-    views: "21.8K",
-    featured: true,
-    tags: ["Syslog", "OT Security", "Data Transfer"],
-    slug: "securing-syslog-transfer-ot-it",
-  },
-  {
-    id: 3,
-    title:
-      "Securing RDP using TFG – BSG",
-    excerpt:
-      "Comprehensive guide to securing RDP connections in enterprise environments using advanced bidirectional security gateways and industry best practices for maximum protection.",
-    category: "Network Security",
-    readTime: "8 min read",
-    publishDate: "2024-01-15",
-    views: "12.4K",
-    featured: true,
-    tags: ["RDP", "Network Security", "TFG-BSG"],
-    slug: "securing-rdp-access-tfg-bsg",
-  },
-  {
-    id: 3,
-    title: "Cybersecurity Challenges in Supply Chain Management",
-    excerpt:
-      "Exploring critical cybersecurity vulnerabilities in modern supply chains and implementing robust defense strategies to protect against sophisticated attacks.",
-    category: "Supply Chain",
-    readTime: "10 min read",
-    publishDate: "2024-01-10",
-    views: "33.2K",
-    featured: false,
-    tags: ["Supply Chain", "Risk Management"],
-    slug: "cybersecurity-challenges-supply-chain",
-  },
-  {
-    id: 4,
-    title:
-      "Cybersecurity Challenges in Water Treatment Plants and How Terafence Solves Them",
-    excerpt:
-      "Critical infrastructure protection for water treatment facilities using advanced cybersecurity solutions and comprehensive monitoring systems for operational security.",
-    category: "Critical Infrastructure",
-    readTime: "12 min read",
-    publishDate: "2024-01-08",
-    views: "22.1K",
-    featured: false,
-    tags: ["Water Treatment", "Critical Infrastructure"],
-    slug: "cybersecurity-water-treatment-plants",
-  },
-  {
-    id: 5,
-    title:
-      "Cybersecurity Challenges in the Pharmaceutical Industry and How Terafence Solves Them",
-    excerpt:
-      "Protecting sensitive pharmaceutical data and manufacturing processes from sophisticated cyber threats while ensuring regulatory compliance and data protection.",
-    category: "Pharmaceutical",
-    readTime: "9 min read",
-    publishDate: "2024-01-05",
-    views: "31.9K",
-    featured: false,
-    tags: ["Pharmaceutical", "FDA Compliance"],
-    slug: "cybersecurity-pharmaceutical-industry",
-  },
-  {
-    id: 6,
-    title: "Cybersecurity Challenges in the Integrated Transportation Sector",
-    excerpt:
-      "Securing modern transportation systems against cyber threats while maintaining operational efficiency and passenger safety in connected infrastructure environments.",
-    category: "Transportation",
-    readTime: "11 min read",
-    publishDate: "2024-01-03",
-    views: "22.7K",
-    featured: false,
-    tags: ["Transportation", "ITS Security"],
-    slug: "cybersecurity-transportation-sector",
-  },
-  {
-    id: 7,
-    title: "Challenges to OT Cybersecurity",
-    excerpt:
-      "Understanding and addressing the unique cybersecurity challenges facing operational technology environments in industrial settings and critical infrastructure systems.",
-    category: "OT Security",
-    readTime: "7 min read",
-    publishDate: "2024-01-01",
-    views: "32.5K",
-    featured: false,
-    tags: ["OT Security", "Industrial Control"],
-    slug: "challenges-ot-cybersecurity",
-  },
-  {
-    id: 8,
-    title:
-      "Reinforcing CCTV Security in the Era of Hyperconnected Infrastructure",
-    excerpt:
-      "Strengthening surveillance system security against sophisticated attacks in interconnected smart infrastructure environments and IoT-enabled monitoring systems.",
-    category: "Surveillance Security",
-    readTime: "8 min read",
-    publishDate: "2023-12-28",
-    views: "11.6K",
-    featured: false,
-    tags: ["CCTV Security", "Video Surveillance"],
-    slug: "reinforcing-cctv-security-hyperconnected",
-  },
-  {
-    id: 9,
-    title:
-      "Bridging the Divide, Securely: Transferring Large Files Between Secure and Unsecure Networks",
-    excerpt:
-      "Secure methods for transferring large files across network boundaries while maintaining data integrity and confidentiality in air-gapped and segmented environments.",
-    category: "Data Transfer",
-    readTime: "9 min read",
-    publishDate: "2023-12-25",
-    views: "22.8K",
-    featured: false,
-    tags: ["File Transfer", "Network Security"],
-    slug: "secure-large-file-transfer-networks",
-  },
-  {
-    id: 10,
-    title:
-      "Securing the Patch and Software Distribution for Air-Gapped Networks",
-    excerpt:
-      "Best practices for maintaining software updates and security patches in isolated network environments while ensuring system integrity and operational continuity.",
-    category: "Air-Gap Security",
-    readTime: "10 min read",
-    publishDate: "2023-12-22",
-    views: "22.0K",
-    featured: false,
-    tags: ["Air-Gapped Networks", "Patch Management"],
-    slug: "securing-patch-distribution-air-gapped",
-  },
-];
-
-const categories = [
-  "All",
-  "Network Security",
-  "OT Security",
-  "Critical Infrastructure",
-  "Supply Chain",
-  "Transportation",
-  "Pharmaceutical",
-  "Surveillance Security",
-  "Data Transfer",
-  "Air-Gap Security",
-];
+import { blogPosts, categories } from "@/app/data/blog/article"; 
 
 export default function BlogLanding() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -231,7 +54,8 @@ export default function BlogLanding() {
       <Navbar />
 
       {/* Ultra Premium Dark Hero Section */}
-      <section className="relative py-16 lg:py-20 overflow-hidden bg-gradient-to-br from-gray-900 via-slate-900 to-black">
+      <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-gray-900 via-slate-900 to-black">
+        {" "}
         {/* Sophisticated Dark Background Elements */}
         <div className="absolute inset-0">
           {/* Premium gradient overlays */}
@@ -257,8 +81,7 @@ export default function BlogLanding() {
           {/* Mesh gradient overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-black/20"></div>
         </div>
-
-        <Wrapper className="relative z-10">
+        <Wrapper className="relative z-10 w-full">
           <div className="max-w-6xl mx-auto">
             {/* Ultra Premium Badge */}
             <motion.div
@@ -293,8 +116,8 @@ export default function BlogLanding() {
               </h1>
               <div className="max-w-4xl mx-auto">
                 <p className="text-lg lg:text-xl text-gray-300 mb-4 leading-relaxed font-light">
-                  Unlock expert insights & cutting-edge strategies for the most sophisticated
-                  cybersecurity challenges.
+                  Unlock expert insights & cutting-edge strategies for the most
+                  sophisticated cybersecurity challenges.
                 </p>
                 <p className="text-base text-gray-400 max-w-3xl mx-auto">
                   Trusted by security professionals defending critical
