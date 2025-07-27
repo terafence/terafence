@@ -10,7 +10,6 @@ import {
   Shield,
   Lock,
   Server,
-  Database,
   ChevronRight,
   ArrowUpRight,
   Youtube
@@ -153,8 +152,6 @@ const Footer: React.FC = () => {
                   { name: "TFG 121", href: "/devices", icon: <Shield className="h-4 w-4" /> },
                   { name: "TFG 1U-RP", href: "/devices", icon: <Lock className="h-4 w-4" /> },
                   { name: "TFG BSG", href: "/devices", icon: <Server className="h-4 w-4" /> },
-                  { name: "TFG MBSecure+", href: "/devices", icon: <Database className="h-4 w-4" /> },
-                  { name: "TFG VSecure", href: "/devices", icon: <Shield className="h-4 w-4" /> },
                 ].map((item, idx) => (
                   <li key={idx}>
                     <Link 
@@ -212,7 +209,6 @@ const Footer: React.FC = () => {
               <ul className="space-y-3 text-sm">
                 {[
                   { name: "Our Story", href: "/about" },
-                  { name: "Meet the Team", href: "/about/team" },
                   { name: "Downloads", href: "/download" },
                   { name: "Use Cases", href: "/usecases" },
                 ].map((item, idx) => (
