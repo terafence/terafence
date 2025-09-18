@@ -44,8 +44,7 @@ function getTransporter(): Transporter {
 }
 
 // ---------- Helpers ----------
-function fromHeader(fallbackName = "Terafence Website") {
-  // Expect EMAIL_FROM to be an address like info@terafence.in
+function fromHeader(fallbackName = "Terafence") {
   const addr = (process.env.EMAIL_FROM || process.env.EMAIL_SERVER_USER || "").trim();
   if (addr.includes("@")) return `"${fallbackName}" <${addr}>`;
   return `"${fallbackName}" <${process.env.EMAIL_SERVER_USER}>`;
@@ -267,8 +266,8 @@ Terafence Private Limited
     const transporter = getTransporter();
 
     const companyMail = {
-      from: fromHeader("Terafence Website"),
-      to: "amandeep@terafence.in", // keep your recipient
+      from: fromHeader("Terafence"),
+      to: "info@terafence.in", 
       subject: `New Contact Form: ${data.firstName} ${data.lastName} from ${data.company}`,
       html: companyEmailTemplate,
       text: companyPlainTextEmail,
