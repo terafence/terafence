@@ -40,13 +40,13 @@ const NAV_LINKS: NavLink[] = [
     name: "Technology",
     href: "/technology",
   },
-  // {
-  //   name: "Partners",
-  //   href: "/partners",
-  // },
   {
     name: "Blogs",
     href: "/blog",
+  },
+  {
+    name: "iTF",
+    href: "/iTF",
   },
   {
     name: "Products",
