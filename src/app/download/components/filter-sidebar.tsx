@@ -31,7 +31,7 @@ export default function FilterSidebar({
     "Implementation Guide",
   ]
 
-  const products: Protocol[] = ["Syslog" , "SFTP" , "SMTP" , "SMB ( SAMBA )" , "Modbus" , "HTTP/S" , "IEC" , "SNMP"]
+  const products: Protocol[] = ["All", "Syslog (TCP/UDP)" , "SFTP" , "SMTP" , "SMB" , "Modbus (TCP/UDP)" , "HTTP/S (PUT/POST)" , "IEC-104" , "SNMP" , "RDP" , "OPC UA", "VNC"]
 
   const hasActiveFilters = selectedTypes.length > 0 || selectedProducts.length > 0
 

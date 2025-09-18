@@ -7,7 +7,7 @@ export type ResourceType =
   | "Security Advisory"
   | "Implementation Guide"
 
-export type Protocol = "Syslog" | "SFTP" | "SMTP" | "SMB ( SAMBA )" | "Modbus" | "HTTP/S" | "IEC" | "SNMP"
+export type Protocol = "All"| "Syslog (TCP/UDP)" | "SFTP" | "SMTP" | "SMB" | "Modbus (TCP/UDP)" | "HTTP/S (PUT/POST)" | "IEC-104" | "SNMP" | "RDP" | "OPC UA" | "VNC"
 
 export interface Resource {
   id: string

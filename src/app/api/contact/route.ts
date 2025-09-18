@@ -154,7 +154,7 @@ export async function POST(request: Request) {
     <tr><td align="center" style="padding:30px 10px">
       <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;background:#fff;border-radius:8px;box-shadow:0 3px 10px rgba(0,0,0,0.08)">
         <tr><td align="center">
-          <table width="100%" style="background:linear-gradient(135deg,#1e3a8a 0%,#3b82f6 100%)">
+          <table width="100%" style="background: linear-gradient(135deg, #60a5fa 0%, #bfdbfe 100%)">
             <tr><td align="center" style="padding:30px 0">
               <img src="https://terafence.in/images/terafence.png" alt="Terafence" width="180" style="display:block;border:0;max-width:180px">
             </td></tr>
@@ -200,7 +200,7 @@ export async function POST(request: Request) {
                 </td>
                 <td width="10"></td>
                 <td align="center" style="border-radius:6px;background:#3b82f6">
-                  <a href="https://www.linkedin.com/in/yash-sejwal-93717921a/" target="_blank" style="border:none;border-radius:6px;color:#fff;display:inline-block;font-size:16px;font-weight:500;line-height:1.2;padding:15px 22px;text-decoration:none">Connect on LinkedIn</a>
+                  <a href="https://www.linkedin.com/company/terafence-private-limited/" target="_blank" style="border:none;border-radius:6px;color:#fff;display:inline-block;font-size:16px;font-weight:500;line-height:1.2;padding:15px 22px;text-decoration:none">Connect on LinkedIn</a>
                 </td>
               </tr></table>
             </td></tr>
@@ -214,13 +214,10 @@ export async function POST(request: Request) {
           <table width="100%" style="background:#f8fafc;border-bottom-left-radius:8px;border-bottom-right-radius:8px">
             <tr><td align="center" style="padding:25px 40px">
               <p style="margin:0;font-size:12px;line-height:1.5;color:#718096;text-align:center">
-                For assistance, contact <a href="mailto:support@terafence.in" style="color:#3b82f6;text-decoration:none">support@terafence.in</a>
+                For more assistance, contact <a href="mailto:support@terafence.in" style="color:#3b82f6;text-decoration:none">support@terafence.in</a>
               </p>
               <p style="margin:10px 0 0 0;font-size:12px;line-height:1.5;color:#718096;text-align:center">
                 209, Suncity Success Tower, Sector-65, Gurgaon-122005, Haryana, India
-              </p>
-              <p style="margin:10px 0 0 0;font-size:12px;line-height:1.5;color:#718096;text-align:center">
-                <a href="https://terafence.in/" target="_blank" style="color:#3b82f6;text-decoration:none">terafence.in</a>
               </p>
               <p style="margin:10px 0 0 0;font-size:12px;line-height:1.5;color:#718096;text-align:center">
                 &copy; 2025 Terafence Private Limited. All rights reserved.
