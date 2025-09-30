@@ -89,7 +89,7 @@ export default function MapAddress() {
                 </div>
                 <p>
                   <span className="font-medium">Timings: </span>
-                  10 AM to 07 PM (Monday to Friday)
+                  11 AM - 06 PM (Monday to Friday)
                 </p>
               </div>
 

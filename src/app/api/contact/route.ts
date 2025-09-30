@@ -153,7 +153,7 @@ export async function POST(request: Request) {
     <tr><td align="center" style="padding:30px 10px">
       <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;background:#fff;border-radius:8px;box-shadow:0 3px 10px rgba(0,0,0,0.08)">
         <tr><td align="center">
-          <table width="100%" style="background: linear-gradient(135deg, #60a5fa 0%, #bfdbfe 100%)">
+          <table width="100%" style="background: linear-gradient(135deg, #cbe3ffff 0%, #bfdbfe 100%)">
             <tr><td align="center" style="padding:30px 0">
               <img src="https://terafence.in/images/terafence.png" alt="Terafence" width="180" style="display:block;border:0;max-width:180px">
             </td></tr>
