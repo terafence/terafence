@@ -168,10 +168,11 @@ function IndiaPresence() {
 
   const locations = [
     { id: "ahmedabad", name: "Ahmedabad", x: 41, y: 47 },
-    { id: "bangalore", name: "Bangalore", x: 44.3, y: 76 },
+    { id: "karnataka", name: "karnataka", x: 44.3, y: 76 },
     { id: "noida", name: "Ghaziabad", x: 45.6, y: 30 },
     { id: "kerala", name: "Kerala", x: 43, y: 85 },
     { id: "tamilnadu", name: "Tamil Nadu", x: 45.4, y: 84 },
+    { id: "madhya", name: "Tamil Nadu", x: 45.4, y: 84 },
   ];
 
   return (
