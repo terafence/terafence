@@ -1,5 +1,5 @@
 // app/api/contact/route.ts
-// Server-side API route for contact form with reCAPTCHA verification
+// Server-side API route for contact form with optional reCAPTCHA verification
 
 import { NextRequest, NextResponse } from 'next/server';
 
@@ -10,19 +10,19 @@ import { NextRequest, NextResponse } from 'next/server';
 const RECAPTCHA_V3_SECRET_KEY = process.env.RECAPTCHA_V3_SECRET_KEY || ''; 
 const RECAPTCHA_V2_SECRET_KEY = process.env.RECAPTCHA_V2_SECRET_KEY || ''; 
 
+// Set to true to skip reCAPTCHA verification (for testing only!)
+const SKIP_RECAPTCHA = !RECAPTCHA_V3_SECRET_KEY && !RECAPTCHA_V2_SECRET_KEY;
+
 // Minimum score for reCAPTCHA v3 (0.0 - 1.0)
-// Lower = more suspicious, Higher = more likely human
-// Default threshold is 0.5, we're being slightly more permissive at 0.4
 const RECAPTCHA_V3_THRESHOLD = 0.4;
 
 // Minimum time (ms) a human would take to fill the form
-const MIN_SUBMISSION_TIME = 3000; // 3 seconds
+const MIN_SUBMISSION_TIME = 3000;
 
 // ============================================
 // VALIDATION UTILITIES (Server-side)
 // ============================================
 
-// Disposable email domains list
 const DISPOSABLE_EMAIL_DOMAINS = new Set([
   'tempmail.com', 'throwaway.com', 'guerrillamail.com', 'mailinator.com',
   '10minutemail.com', 'temp-mail.org', 'fakeinbox.com', 'trashmail.com',
@@ -36,7 +36,6 @@ const DISPOSABLE_EMAIL_DOMAINS = new Set([
   'getairmail.com', 'temp.email', 'burnermail.io', 'mailsac.com'
 ]);
 
-// Gibberish patterns
 const GIBBERISH_PATTERNS = [
   /^[a-z]{1,2}$/i,
   /^(.)\1{3,}$/,
@@ -168,12 +167,11 @@ async function verifyRecaptcha(
   const secretKey = version === 'v3' ? RECAPTCHA_V3_SECRET_KEY : RECAPTCHA_V2_SECRET_KEY;
   
   if (!secretKey) {
-    console.error('reCAPTCHA secret key not configured');
-    return { success: false, error: 'Server configuration error' };
+    console.warn('reCAPTCHA secret key not configured, skipping verification');
+    return { success: true };
   }
   
   try {
-    // Build the request body properly typed
     const params: Record<string, string> = {
       secret: secretKey,
       response: token,
@@ -203,7 +201,6 @@ async function verifyRecaptcha(
       return { success: false, error: 'reCAPTCHA verification failed' };
     }
     
-    // For v3, check the score
     if (version === 'v3') {
       const score = data.score || 0;
       
@@ -219,7 +216,6 @@ async function verifyRecaptcha(
       return { success: true, score };
     }
     
-    // For v2, success is enough
     return { success: true };
     
   } catch (error) {
@@ -229,13 +225,12 @@ async function verifyRecaptcha(
 }
 
 // ============================================
-// RATE LIMITING (Simple in-memory implementation)
-// For production, use Redis or a proper rate limiting service
+// RATE LIMITING
 // ============================================
 
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
-const RATE_LIMIT_WINDOW = 60 * 1000; // 1 minute
-const RATE_LIMIT_MAX = 5; // Max 5 requests per minute per IP
+const RATE_LIMIT_WINDOW = 60 * 1000;
+const RATE_LIMIT_MAX = 5;
 
 function checkRateLimit(ip: string): { allowed: boolean; retryAfter?: number } {
   const now = Date.now();
@@ -263,7 +258,6 @@ function checkRateLimit(ip: string): { allowed: boolean; retryAfter?: number } {
 
 export async function POST(request: NextRequest) {
   try {
-    // Get client IP
     const ip = request.headers.get('x-forwarded-for')?.split(',')[0] || 
                request.headers.get('x-real-ip') || 
                'unknown';
@@ -335,46 +329,63 @@ export async function POST(request: NextRequest) {
     }
     
     // ============================================
-    // RECAPTCHA VERIFICATION
+    // RECAPTCHA VERIFICATION (OPTIONAL)
     // ============================================
     
-    if (!recaptchaToken) {
-      return NextResponse.json(
-        { success: false, error: 'CAPTCHA verification required' },
-        { status: 400 }
-      );
-    }
-    
-    const recaptchaResult = await verifyRecaptcha(
-      recaptchaToken, 
-      recaptchaVersion || 'v3',
-      ip
-    );
-    
-    if (!recaptchaResult.success) {
-      // If v3 score was too low, ask for v2 verification
-      if (recaptchaVersion === 'v3' && recaptchaResult.score !== undefined) {
-        return NextResponse.json(
-          { 
-            success: false, 
-            requiresCaptchaV2: true,
-            error: 'Additional verification required' 
-          },
-          { status: 200 }
+    if (!SKIP_RECAPTCHA) {
+      if (!recaptchaToken) {
+        // If no token but reCAPTCHA is configured, ask for v2
+        if (RECAPTCHA_V2_SECRET_KEY) {
+          return NextResponse.json(
+            { 
+              success: false, 
+              requiresCaptchaV2: true,
+              error: 'Please complete the CAPTCHA verification' 
+            },
+            { status: 200 }
+          );
+        }
+        // If only v3 is configured and no token, reject
+        if (RECAPTCHA_V3_SECRET_KEY) {
+          return NextResponse.json(
+            { success: false, error: 'Security verification failed. Please refresh and try again.' },
+            { status: 400 }
+          );
+        }
+      } else {
+        const recaptchaResult = await verifyRecaptcha(
+          recaptchaToken, 
+          recaptchaVersion || 'v3',
+          ip
         );
+        
+        if (!recaptchaResult.success) {
+          // If v3 score was too low, ask for v2 verification
+          if (recaptchaVersion === 'v3' && recaptchaResult.score !== undefined && RECAPTCHA_V2_SECRET_KEY) {
+            return NextResponse.json(
+              { 
+                success: false, 
+                requiresCaptchaV2: true,
+                error: 'Additional verification required' 
+              },
+              { status: 200 }
+            );
+          }
+          
+          return NextResponse.json(
+            { success: false, error: recaptchaResult.error || 'Verification failed' },
+            { status: 400 }
+          );
+        }
       }
-      
-      return NextResponse.json(
-        { success: false, error: recaptchaResult.error },
-        { status: 400 }
-      );
+    } else {
+      console.warn('⚠️ reCAPTCHA is disabled - no secret keys configured');
     }
     
     // ============================================
     // PROCESS FORM SUBMISSION
     // ============================================
     
-    // Log the submission (replace with your actual processing logic)
     console.log('✅ Form submission received:', {
       firstName,
       lastName,
@@ -386,7 +397,6 @@ export async function POST(request: NextRequest) {
       helpType,
       referralSource,
       additionalDetails,
-      recaptchaScore: recaptchaResult.score,
       ip,
       timestamp: new Date().toISOString(),
     });
@@ -408,7 +418,6 @@ export async function POST(request: NextRequest) {
   }
 }
 
-// Handle OPTIONS for CORS if needed
 export async function OPTIONS() {
   return new NextResponse(null, {
     status: 200,
