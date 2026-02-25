@@ -441,8 +441,8 @@ const ValidationIndicator = ({ status, message }: ValidationIndicatorProps) => {
 // MAIN COMPONENT
 // ============================================
 
-// Your reCAPTCHA v2 site key - replace with your actual key
-const RECAPTCHA_V2_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_V2_SITE_KEY || '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI'; // Test key
+// Your reCAPTCHA v2 site key
+const RECAPTCHA_V2_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_V2_SITE_KEY || '';
 
 export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -495,33 +495,62 @@ export default function ContactForm() {
     formStartTime.current = Date.now();
   }, [isSubmitted]);
 
-  // Initialize reCAPTCHA v2 when script loads
-  useEffect(() => {
-    if (recaptchaLoaded && !captchaWidgetId.current && !isSubmitted) {
-      const container = document.getElementById('recaptcha-v2-container');
-      if (container && window.grecaptcha) {
-        try {
-          captchaWidgetId.current = window.grecaptcha.render(container, {
-            sitekey: RECAPTCHA_V2_SITE_KEY,
-            callback: (token: string) => {
-              setCaptchaV2Token(token);
-            },
-            'expired-callback': () => {
-              setCaptchaV2Token(null);
-            },
-            'error-callback': () => {
-              setCaptchaV2Token(null);
-              setFormError('CAPTCHA verification failed. Please try again.');
-            },
-            theme: 'light',
-            size: 'normal',
-          });
-        } catch (error) {
-          console.error('Error rendering reCAPTCHA v2:', error);
-        }
-      }
+  // Initialize reCAPTCHA v2 via global onload callback
+  const renderCaptcha = useCallback(() => {
+    if (captchaWidgetId.current !== null || isSubmitted) return;
+    const container = document.getElementById('recaptcha-v2-container');
+    if (!container || !window.grecaptcha?.render) return;
+    
+    try {
+      captchaWidgetId.current = window.grecaptcha.render(container, {
+        sitekey: RECAPTCHA_V2_SITE_KEY,
+        callback: (token: string) => {
+          setCaptchaV2Token(token);
+        },
+        'expired-callback': () => {
+          setCaptchaV2Token(null);
+        },
+        'error-callback': () => {
+          setCaptchaV2Token(null);
+          setFormError('CAPTCHA verification failed. Please try again.');
+        },
+        theme: 'light',
+        size: 'normal',
+      });
+    } catch (error) {
+      console.error('Error rendering reCAPTCHA v2:', error);
     }
-  }, [recaptchaLoaded, isSubmitted]);
+  }, [isSubmitted]);
+
+  // Register global onload callback for reCAPTCHA script
+  useEffect(() => {
+    (window as any).onRecaptchaLoad = () => {
+      setRecaptchaLoaded(true);
+      renderCaptcha();
+    };
+    
+    // If script already loaded (e.g. hot reload), render immediately
+    if (window.grecaptcha?.render) {
+      setRecaptchaLoaded(true);
+      renderCaptcha();
+    }
+    
+    return () => {
+      delete (window as any).onRecaptchaLoad;
+    };
+  }, [renderCaptcha]);
+
+  // Re-render captcha when form resets from submitted state
+  useEffect(() => {
+    if (!isSubmitted && recaptchaLoaded) {
+      // Small delay to let the DOM render the container
+      const timer = setTimeout(() => {
+        captchaWidgetId.current = null;
+        renderCaptcha();
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+  }, [isSubmitted, recaptchaLoaded, renderCaptcha]);
 
   // Real-time field validation
   const validateFieldRealtime = useCallback((field: string, value: string) => {
@@ -694,11 +723,10 @@ export default function ContactForm() {
 
   return (
     <>
-      {/* Load reCAPTCHA v2 Script */}
+      {/* Load reCAPTCHA v2 Script with explicit render + onload callback */}
       <Script
-        src="https://www.google.com/recaptcha/api.js?render=explicit"
-        strategy="lazyOnload"
-        onLoad={() => setRecaptchaLoaded(true)}
+        src="https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoad&render=explicit"
+        strategy="afterInteractive"
       />
       
       <motion.section
