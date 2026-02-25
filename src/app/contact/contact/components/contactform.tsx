@@ -499,7 +499,7 @@ export default function ContactForm() {
   const renderCaptcha = useCallback(() => {
     if (captchaWidgetId.current !== null || isSubmitted) return;
     const container = document.getElementById('recaptcha-v2-container');
-    if (!container || !window.grecaptcha?.render) return;
+    if (!container || !window.grecaptcha || typeof window.grecaptcha.render !== 'function') return;
     
     try {
       captchaWidgetId.current = window.grecaptcha.render(container, {
@@ -530,7 +530,7 @@ export default function ContactForm() {
     };
     
     // If script already loaded (e.g. hot reload), render immediately
-    if (window.grecaptcha?.render) {
+    if (window.grecaptcha && typeof window.grecaptcha.render === 'function') {
       setRecaptchaLoaded(true);
       renderCaptcha();
     }
