@@ -441,8 +441,8 @@ const ValidationIndicator = ({ status, message }: ValidationIndicatorProps) => {
 // MAIN COMPONENT
 // ============================================
 
-// Your reCAPTCHA v2 site key
-const RECAPTCHA_V2_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_V2_SITE_KEY || '';
+// reCAPTCHA v2 site key
+const RECAPTCHA_V2_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_V2_SITE_KEY || '6LcwQyQsAAAAAPewy7OA6KHFMlRo-diwZdPbgxxv';
 
 export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
