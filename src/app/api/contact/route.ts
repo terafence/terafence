@@ -1,8 +1,11 @@
 // app/api/contact/route.ts
 // Server-side API route for contact form with reCAPTCHA + email notifications
 
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse, after } from 'next/server';
 import nodemailer from 'nodemailer';
+
+// Allow longer execution for email sending (Vercel Pro: up to 60s)
+export const maxDuration = 30;
 
 // ============================================
 // CONFIGURATION
@@ -580,12 +583,15 @@ export async function POST(request: NextRequest) {
 
     console.log(`✅ ${ticketId} — Form submission from ${firstName} ${lastName} <${email}> @ ${company}`);
 
-    try {
-      await sendEmails(formData, ticketId);
-    } catch (emailError) {
-      console.error('❌ Email sending failed:', emailError);
-      // Still return success — form data is logged; email failure shouldn't block the user
-    }
+    // Send emails in the BACKGROUND after the response is returned to the user.
+    // This prevents Vercel 504 timeouts caused by slow SMTP servers.
+    after(async () => {
+      try {
+        await sendEmails(formData, ticketId);
+      } catch (emailError) {
+        console.error('❌ Email sending failed:', emailError);
+      }
+    });
 
     return NextResponse.json({
       success: true,
