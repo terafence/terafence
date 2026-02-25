@@ -441,15 +441,13 @@ const ValidationIndicator = ({ status, message }: ValidationIndicatorProps) => {
 // MAIN COMPONENT
 // ============================================
 
-// Your reCAPTCHA site keys - replace with your actual keys
-const RECAPTCHA_V3_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_V3_SITE_KEY || '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI'; // Test key
+// Your reCAPTCHA v2 site key - replace with your actual key
 const RECAPTCHA_V2_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_V2_SITE_KEY || '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI'; // Test key
 
 export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [formError, setFormError] = useState<string | null>(null);
-  const [showCaptchaV2, setShowCaptchaV2] = useState(false);
   const [captchaV2Token, setCaptchaV2Token] = useState<string | null>(null);
   const [recaptchaLoaded, setRecaptchaLoaded] = useState(false);
   
@@ -497,9 +495,9 @@ export default function ContactForm() {
     formStartTime.current = Date.now();
   }, [isSubmitted]);
 
-  // Initialize reCAPTCHA v2 when needed
+  // Initialize reCAPTCHA v2 when script loads
   useEffect(() => {
-    if (showCaptchaV2 && recaptchaLoaded && !captchaWidgetId.current) {
+    if (recaptchaLoaded && !captchaWidgetId.current && !isSubmitted) {
       const container = document.getElementById('recaptcha-v2-container');
       if (container && window.grecaptcha) {
         try {
@@ -523,7 +521,7 @@ export default function ContactForm() {
         }
       }
     }
-  }, [showCaptchaV2, recaptchaLoaded]);
+  }, [recaptchaLoaded, isSubmitted]);
 
   // Real-time field validation
   const validateFieldRealtime = useCallback((field: string, value: string) => {
@@ -573,31 +571,6 @@ export default function ContactForm() {
     }, 300);
   }, [form]);
 
-  // Get reCAPTCHA v3 token
-  const getRecaptchaV3Token = async (): Promise<string | null> => {
-    if (!window.grecaptcha) {
-      console.error('reCAPTCHA not loaded');
-      return null;
-    }
-    
-    try {
-      return new Promise((resolve) => {
-        window.grecaptcha.ready(async () => {
-          try {
-            const token = await window.grecaptcha.execute(RECAPTCHA_V3_SITE_KEY, { action: 'contact_form' });
-            resolve(token);
-          } catch (error) {
-            console.error('reCAPTCHA execution error:', error);
-            resolve(null);
-          }
-        });
-      });
-    } catch (error) {
-      console.error('reCAPTCHA error:', error);
-      return null;
-    }
-  };
-
   // Form submission handler
   const onSubmit = async (data: FormValues) => {
     setFormError(null);
@@ -638,33 +611,17 @@ export default function ContactForm() {
     setIsSubmitting(true);
     
     // ============================================
-    // RECAPTCHA VERIFICATION
+    // RECAPTCHA V2 VERIFICATION
     // ============================================
     
-    let recaptchaToken: string | null = null;
-    let recaptchaVersion: 'v3' | 'v2' = 'v3';
-    
-    if (showCaptchaV2) {
-      // Use v2 token
-      if (!captchaV2Token) {
-        setFormError('Please complete the CAPTCHA verification.');
-        setIsSubmitting(false);
-        return;
-      }
-      recaptchaToken = captchaV2Token;
-      recaptchaVersion = 'v2';
-    } else {
-      // Try v3 first
-      recaptchaToken = await getRecaptchaV3Token();
-      
-      if (!recaptchaToken) {
-        // Fallback to v2
-        setShowCaptchaV2(true);
-        setIsSubmitting(false);
-        setFormError('Please complete the CAPTCHA verification below.');
-        return;
-      }
+    if (!captchaV2Token) {
+      setFormError('Please complete the CAPTCHA verification.');
+      setIsSubmitting(false);
+      return;
     }
+    
+    const recaptchaToken = captchaV2Token;
+    const recaptchaVersion = 'v2' as const;
     
     // ============================================
     // SUBMIT FORM
@@ -697,18 +654,16 @@ export default function ContactForm() {
         setIsSubmitted(true);
         setSubmissionCount(0);
         form.reset();
-      } else if (result.requiresCaptchaV2) {
-        // Server says we need v2 verification (low v3 score)
-        setShowCaptchaV2(true);
-        setFormError('Additional verification required. Please complete the CAPTCHA below.');
-        if (captchaWidgetId.current !== null && window.grecaptcha) {
-          window.grecaptcha.reset(captchaWidgetId.current);
-        }
         setCaptchaV2Token(null);
       } else {
         setFormError(
           result.error || "Failed to send your message. Please try again."
         );
+        // Reset captcha on error
+        if (captchaWidgetId.current !== null && window.grecaptcha) {
+          window.grecaptcha.reset(captchaWidgetId.current);
+        }
+        setCaptchaV2Token(null);
         console.error("Failed to send email", result);
       }
     } catch (error) {
@@ -739,9 +694,9 @@ export default function ContactForm() {
 
   return (
     <>
-      {/* Load reCAPTCHA Scripts */}
+      {/* Load reCAPTCHA v2 Script */}
       <Script
-        src={`https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_V3_SITE_KEY}`}
+        src="https://www.google.com/recaptcha/api.js?render=explicit"
         strategy="lazyOnload"
         onLoad={() => setRecaptchaLoaded(true)}
       />
@@ -926,7 +881,6 @@ export default function ContactForm() {
                 <Button
                   onClick={() => {
                     setIsSubmitted(false);
-                    setShowCaptchaV2(false);
                     setCaptchaV2Token(null);
                     captchaWidgetId.current = null;
                   }}
@@ -1363,33 +1317,24 @@ export default function ContactForm() {
                     )}
                   />
 
-                  {/* reCAPTCHA v2 fallback - shown when needed */}
-                  <AnimatePresence>
-                    {showCaptchaV2 && (
-                      <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        className="flex flex-col items-center py-3"
+                  {/* reCAPTCHA v2 checkbox - always visible */}
+                  <div className="flex flex-col items-center py-3">
+                    <p className="text-sm text-gray-600 mb-3 flex items-center">
+                      <ShieldCheck className="h-4 w-4 mr-2 text-blue-500" />
+                      Please verify you are human
+                    </p>
+                    <div id="recaptcha-v2-container" className="flex justify-center"></div>
+                    {captchaV2Token && (
+                      <motion.p 
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        className="text-xs text-green-600 mt-2 flex items-center"
                       >
-                        <p className="text-sm text-gray-600 mb-3 flex items-center">
-                          <ShieldCheck className="h-4 w-4 mr-2 text-blue-500" />
-                          Please complete the verification below
-                        </p>
-                        <div id="recaptcha-v2-container" className="flex justify-center"></div>
-                        {captchaV2Token && (
-                          <motion.p 
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            className="text-xs text-green-600 mt-2 flex items-center"
-                          >
-                            <CheckCircle2 className="h-3 w-3 mr-1" />
-                            Verification complete
-                          </motion.p>
-                        )}
-                      </motion.div>
+                        <CheckCircle2 className="h-3 w-3 mr-1" />
+                        Verification complete
+                      </motion.p>
                     )}
-                  </AnimatePresence>
+                  </div>
 
                   <div className="text-xs text-gray-600 mt-4 bg-gray-50 p-3 rounded-md border border-gray-100 shadow-inner">
                     <p className="flex items-start">
@@ -1429,7 +1374,7 @@ export default function ContactForm() {
                     <Button
                       type="submit"
                       className="w-full py-3 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white shadow-md relative rounded-lg"
-                      disabled={isSubmitting || (showCaptchaV2 && !captchaV2Token)}
+                      disabled={isSubmitting || !captchaV2Token}
                     >
                       {isSubmitting ? (
                         <div className="flex items-center justify-center gap-2">
@@ -1486,11 +1431,6 @@ export default function ContactForm() {
               flex-direction: column;
               gap: 0.75rem;
             }
-          }
-          
-          /* Hide reCAPTCHA badge - we show our own notice */
-          .grecaptcha-badge {
-            visibility: hidden !important;
           }
         `}</style>
       </motion.section>

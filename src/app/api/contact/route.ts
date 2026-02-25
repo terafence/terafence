@@ -7,14 +7,10 @@ import { NextRequest, NextResponse } from 'next/server';
 // CONFIGURATION
 // ============================================
 
-const RECAPTCHA_V3_SECRET_KEY = process.env.RECAPTCHA_V3_SECRET_KEY || ''; 
 const RECAPTCHA_V2_SECRET_KEY = process.env.RECAPTCHA_V2_SECRET_KEY || ''; 
 
 // Set to true to skip reCAPTCHA verification (for testing only!)
-const SKIP_RECAPTCHA = !RECAPTCHA_V3_SECRET_KEY && !RECAPTCHA_V2_SECRET_KEY;
-
-// Minimum score for reCAPTCHA v3 (0.0 - 1.0)
-const RECAPTCHA_V3_THRESHOLD = 0.4;
+const SKIP_RECAPTCHA = !RECAPTCHA_V2_SECRET_KEY;
 
 // Minimum time (ms) a human would take to fill the form
 const MIN_SUBMISSION_TIME = 3000;
@@ -152,8 +148,6 @@ function validateCompany(company: string): ValidationResult {
 
 interface RecaptchaResponse {
   success: boolean;
-  score?: number;
-  action?: string;
   challenge_ts?: string;
   hostname?: string;
   'error-codes'?: string[];
@@ -161,19 +155,16 @@ interface RecaptchaResponse {
 
 async function verifyRecaptcha(
   token: string, 
-  version: 'v3' | 'v2',
   remoteIp?: string
-): Promise<{ success: boolean; score?: number; error?: string }> {
-  const secretKey = version === 'v3' ? RECAPTCHA_V3_SECRET_KEY : RECAPTCHA_V2_SECRET_KEY;
-  
-  if (!secretKey) {
+): Promise<{ success: boolean; error?: string }> {
+  if (!RECAPTCHA_V2_SECRET_KEY) {
     console.warn('reCAPTCHA secret key not configured, skipping verification');
     return { success: true };
   }
   
   try {
     const params: Record<string, string> = {
-      secret: secretKey,
+      secret: RECAPTCHA_V2_SECRET_KEY,
       response: token,
     };
     
@@ -199,21 +190,6 @@ async function verifyRecaptcha(
     if (!data.success) {
       console.error('reCAPTCHA verification failed:', data['error-codes']);
       return { success: false, error: 'reCAPTCHA verification failed' };
-    }
-    
-    if (version === 'v3') {
-      const score = data.score || 0;
-      
-      if (score < RECAPTCHA_V3_THRESHOLD) {
-        console.log(`reCAPTCHA v3 score too low: ${score}`);
-        return { 
-          success: false, 
-          score,
-          error: 'Additional verification required' 
-        };
-      }
-      
-      return { success: true, score };
     }
     
     return { success: true };
@@ -295,7 +271,6 @@ export async function POST(request: NextRequest) {
       referralSource,
       additionalDetails,
       recaptchaToken,
-      recaptchaVersion,
       submissionTime,
     } = body;
     
@@ -329,57 +304,27 @@ export async function POST(request: NextRequest) {
     }
     
     // ============================================
-    // RECAPTCHA VERIFICATION (OPTIONAL)
+    // RECAPTCHA V2 VERIFICATION
     // ============================================
     
     if (!SKIP_RECAPTCHA) {
       if (!recaptchaToken) {
-        // If no token but reCAPTCHA is configured, ask for v2
-        if (RECAPTCHA_V2_SECRET_KEY) {
-          return NextResponse.json(
-            { 
-              success: false, 
-              requiresCaptchaV2: true,
-              error: 'Please complete the CAPTCHA verification' 
-            },
-            { status: 200 }
-          );
-        }
-        // If only v3 is configured and no token, reject
-        if (RECAPTCHA_V3_SECRET_KEY) {
-          return NextResponse.json(
-            { success: false, error: 'Security verification failed. Please refresh and try again.' },
-            { status: 400 }
-          );
-        }
-      } else {
-        const recaptchaResult = await verifyRecaptcha(
-          recaptchaToken, 
-          recaptchaVersion || 'v3',
-          ip
+        return NextResponse.json(
+          { success: false, error: 'Please complete the CAPTCHA verification' },
+          { status: 400 }
         );
-        
-        if (!recaptchaResult.success) {
-          // If v3 score was too low, ask for v2 verification
-          if (recaptchaVersion === 'v3' && recaptchaResult.score !== undefined && RECAPTCHA_V2_SECRET_KEY) {
-            return NextResponse.json(
-              { 
-                success: false, 
-                requiresCaptchaV2: true,
-                error: 'Additional verification required' 
-              },
-              { status: 200 }
-            );
-          }
-          
-          return NextResponse.json(
-            { success: false, error: recaptchaResult.error || 'Verification failed' },
-            { status: 400 }
-          );
-        }
+      }
+      
+      const recaptchaResult = await verifyRecaptcha(recaptchaToken, ip);
+      
+      if (!recaptchaResult.success) {
+        return NextResponse.json(
+          { success: false, error: recaptchaResult.error || 'Verification failed' },
+          { status: 400 }
+        );
       }
     } else {
-      console.warn('⚠️ reCAPTCHA is disabled - no secret keys configured');
+      console.warn('⚠️ reCAPTCHA is disabled - no secret key configured');
     }
     
     // ============================================
