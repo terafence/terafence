@@ -495,11 +495,16 @@ export default function ContactForm() {
     formStartTime.current = Date.now();
   }, [isSubmitted]);
 
+  // Track if captcha has been rendered to prevent double-render
+  const captchaRendered = useRef(false);
+
   // Initialize reCAPTCHA v2 via global onload callback
   const renderCaptcha = useCallback(() => {
-    if (captchaWidgetId.current !== null || isSubmitted) return;
+    if (captchaRendered.current || isSubmitted) return;
     const container = document.getElementById('recaptcha-v2-container');
     if (!container || !window.grecaptcha || typeof window.grecaptcha.render !== 'function') return;
+    // Check if container already has children (already rendered)
+    if (container.hasChildNodes()) return;
     
     try {
       captchaWidgetId.current = window.grecaptcha.render(container, {
@@ -517,6 +522,7 @@ export default function ContactForm() {
         theme: 'light',
         size: 'normal',
       });
+      captchaRendered.current = true;
     } catch (error) {
       console.error('Error rendering reCAPTCHA v2:', error);
     }
@@ -540,16 +546,20 @@ export default function ContactForm() {
     };
   }, [renderCaptcha]);
 
-  // Re-render captcha when form resets from submitted state
+  // Re-render captcha when form resets from submitted state back to form
+  const prevSubmitted = useRef(isSubmitted);
   useEffect(() => {
-    if (!isSubmitted && recaptchaLoaded) {
-      // Small delay to let the DOM render the container
+    // Only run when transitioning from submitted=true → submitted=false
+    if (prevSubmitted.current && !isSubmitted && recaptchaLoaded) {
       const timer = setTimeout(() => {
+        captchaRendered.current = false;
         captchaWidgetId.current = null;
         renderCaptcha();
-      }, 100);
+      }, 200);
+      prevSubmitted.current = isSubmitted;
       return () => clearTimeout(timer);
     }
+    prevSubmitted.current = isSubmitted;
   }, [isSubmitted, recaptchaLoaded, renderCaptcha]);
 
   // Real-time field validation
@@ -659,7 +669,6 @@ export default function ContactForm() {
     // Format the phone number to include country code
     const formattedData = {
       ...data,
-      phone: `${data.countryCode} ${data.phone}`,
       recaptchaToken,
       recaptchaVersion,
       submissionTime: timeTaken,
@@ -676,6 +685,12 @@ export default function ContactForm() {
         },
         body: JSON.stringify(formattedData),
       });
+
+      // Handle non-JSON responses (e.g. Vercel 504 timeout page)
+      const contentType = response.headers.get('content-type') || '';
+      if (!contentType.includes('application/json')) {
+        throw new Error(`Server returned ${response.status}. Please try again.`);
+      }
 
       const result = await response.json();
 
@@ -910,6 +925,7 @@ export default function ContactForm() {
                   onClick={() => {
                     setIsSubmitted(false);
                     setCaptchaV2Token(null);
+                    captchaRendered.current = false;
                     captchaWidgetId.current = null;
                   }}
                   variant="outline"

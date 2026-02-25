@@ -23,7 +23,7 @@ const SMTP_FROM_EMAIL = 'info@terafence.in';
 
 // Internal email recipients
 const INTERNAL_TO = 'info@terafence.in';
-const INTERNAL_CC = 'jose@terafence.in, akshat@terafence.in, amandeep@terafence.in, yash@terafence.in, shruti@terafence.in';
+const INTERNAL_CC = 'akshat@terafence.in, jose@terafence.in, shruti@terafence.in, yash@terafence.in';
 
 // ============================================
 // SEQUENTIAL TICKET COUNTER
@@ -33,7 +33,7 @@ const INTERNAL_CC = 'jose@terafence.in, akshat@terafence.in, amandeep@terafence.
 // this with a database (e.g. Vercel KV, Supabase, MongoDB).
 // The counter is per-year and resets to 0001 each new year.
 
-let ticketCounter = 100;
+let ticketCounter = 0;
 let ticketYear = new Date().getFullYear();
 
 function getNextTicketId(): string {
@@ -72,6 +72,10 @@ function createTransporter() {
       // GoDaddy/cPanel servers may use self-signed certs
       rejectUnauthorized: false,
     },
+    // Timeouts to prevent Vercel 504 (10s limit on hobby plan)
+    connectionTimeout: 5000,
+    greetingTimeout: 5000,
+    socketTimeout: 8000,
   });
 }
 
@@ -312,25 +316,37 @@ async function sendEmails(data: ContactFormData, ticketId: string): Promise<void
 
   const fromAddress = `"${SMTP_FROM_NAME}" <${SMTP_FROM_EMAIL}>`;
 
-  // 1) Internal notification email
-  await transporter.sendMail({
-    from: fromAddress,
-    to: INTERNAL_TO,
-    cc: INTERNAL_CC,
-    replyTo: `"${data.firstName} ${data.lastName}" <${data.email}>`,
-    subject: ticketId,
-    html: buildInternalEmailHtml(data, ticketId),
-  });
-  console.log(`📧 Internal email sent → ${INTERNAL_TO} (CC: ${INTERNAL_CC})`);
+  // Send both emails in parallel to stay within Vercel timeout
+  const [internalResult, customerResult] = await Promise.allSettled([
+    // 1) Internal notification email
+    transporter.sendMail({
+      from: fromAddress,
+      to: INTERNAL_TO,
+      cc: INTERNAL_CC,
+      replyTo: `"${data.firstName} ${data.lastName}" <${data.email}>`,
+      subject: ticketId,
+      html: buildInternalEmailHtml(data, ticketId),
+    }),
+    // 2) Customer acknowledgment email
+    transporter.sendMail({
+      from: fromAddress,
+      to: `"${data.firstName} ${data.lastName}" <${data.email}>`,
+      subject: `${ticketId} — Thank You for Contacting Terafence`,
+      html: buildCustomerAckHtml(data, ticketId),
+    }),
+  ]);
 
-  // 2) Customer acknowledgment email
-  await transporter.sendMail({
-    from: fromAddress,
-    to: `"${data.firstName} ${data.lastName}" <${data.email}>`,
-    subject: `${ticketId} — Thank You for Contacting Terafence`,
-    html: buildCustomerAckHtml(data, ticketId),
-  });
-  console.log(`📧 Customer acknowledgment sent → ${data.email}`);
+  if (internalResult.status === 'fulfilled') {
+    console.log(`📧 Internal email sent → ${INTERNAL_TO} (CC: ${INTERNAL_CC})`);
+  } else {
+    console.error('❌ Internal email failed:', internalResult.reason);
+  }
+
+  if (customerResult.status === 'fulfilled') {
+    console.log(`📧 Customer acknowledgment sent → ${data.email}`);
+  } else {
+    console.error('❌ Customer email failed:', customerResult.reason);
+  }
 }
 
 // ============================================
