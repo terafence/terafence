@@ -142,22 +142,7 @@ export default function ServiceHero({ data }: { data: ServicePageData }) {
               </div>
             </div>
 
-            {/* Floating credential card */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.6 }}
-              className="absolute -bottom-6 -left-6 bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl p-6"
-            >
-              <div
-                className={`text-3xl font-bold bg-gradient-to-r from-${hero.accentColors.from} to-${hero.accentColors.to} bg-clip-text text-transparent`}
-              >
-                {hero.stats[0]?.value}
-              </div>
-              <div className="text-sm text-gray-300">
-                {hero.stats[0]?.label}
-              </div>
-            </motion.div>
+
           </motion.div>
         </div>
       </div>

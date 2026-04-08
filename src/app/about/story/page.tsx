@@ -33,7 +33,7 @@ export default function SolutionsPage() {
         <SolutionsHero />
         <ServicesOverview />
         <CybersecurityPhilosophy />
-        <IndiaPresence />
+        <GlobalPresence />
         {/* <SolutionsGrid /> */}
         <TerafencePlatform />
       </main>
@@ -320,92 +320,200 @@ function ServicesOverview() {
   );
 }
 
-function IndiaPresence() {
+function GlobalPresence() {
   const [activeLocation, setActiveLocation] = useState<string | null>(null);
 
-  const locations = [
-    { id: "ahmedabad", name: "Ahmedabad", x: 41, y: 47 },
-    { id: "karnataka", name: "karnataka", x: 44.3, y: 76 },
-    { id: "noida", name: "Ghaziabad", x: 45.6, y: 30 },
-    { id: "kerala", name: "Kerala", x: 43, y: 85 },
-    { id: "tamilnadu", name: "Tamil Nadu", x: 45.4, y: 84 },
-    { id: "madhya", name: "Tamil Nadu", x: 45.4, y: 84 },
+  const mapLocations = [
+    { id: "usa", name: "United States", sub: null, x: 36, y: 42 },
+    { id: "italy", name: "Italy", sub: null, x: 50, y: 38 },
+    { id: "japan", name: "Japan", sub: null, x: 67, y: 42 },
+    { id: "thailand", name: "Thailand", sub: null, x: 62, y: 52 },
+    { id: "indonesia", name: "Indonesia", sub: null, x: 65, y: 61 },
+    { id: "india", name: "India", sub: null, x: 59, y: 48 },
   ];
 
   return (
     <section className="w-full py-24 bg-gradient-to-b from-slate-50 to-slate-100 relative overflow-hidden">
-      <div className="absolute inset-0 bg-[url('/images/topo.svg')] opacity-5"></div>
+      <div className="absolute inset-0 bg-[url('/images/topo.svg')] opacity-5" />
+
+      <style>{`
+        @keyframes gp-ripple-a {
+          0%   { transform: translate(-50%,-50%) scale(1);   opacity: 0.7; }
+          100% { transform: translate(-50%,-50%) scale(3.2); opacity: 0; }
+        }
+        @keyframes gp-ripple-b {
+          0%   { transform: translate(-50%,-50%) scale(1);   opacity: 0.5; }
+          100% { transform: translate(-50%,-50%) scale(2.4); opacity: 0; }
+        }
+        @keyframes gp-ripple-c {
+          0%   { transform: translate(-50%,-50%) scale(1);   opacity: 0.35; }
+          100% { transform: translate(-50%,-50%) scale(1.8); opacity: 0; }
+        }
+        @keyframes gp-orbit {
+          0%   { transform: translate(-50%,-50%) rotate(0deg)   translateX(9px) rotate(0deg); }
+          100% { transform: translate(-50%,-50%) rotate(360deg) translateX(9px) rotate(-360deg); }
+        }
+        .gp-marker-wrap { position: absolute; z-index: 10; cursor: pointer; }
+        .gp-ripple {
+          position: absolute;
+          border-radius: 50%;
+          width: 10px; height: 10px;
+          top: 50%; left: 50%;
+          pointer-events: none;
+        }
+        .gp-ripple-a {
+          background: rgba(251,191,36,0.55);
+          animation: gp-ripple-a 2.2s ease-out infinite;
+        }
+        .gp-ripple-b {
+          background: rgba(251,191,36,0.4);
+          animation: gp-ripple-b 2.2s ease-out infinite;
+          animation-delay: 0.55s;
+        }
+        .gp-ripple-c {
+          background: rgba(255,255,255,0.25);
+          animation: gp-ripple-c 2.2s ease-out infinite;
+          animation-delay: 1.1s;
+        }
+        .gp-orbit-dot {
+          position: absolute;
+          width: 3px; height: 3px;
+          background: #fde68a;
+          border-radius: 50%;
+          top: 50%; left: 50%;
+          animation: gp-orbit 3s linear infinite;
+          pointer-events: none;
+          box-shadow: 0 0 4px 1px rgba(253,230,138,0.9);
+        }
+        .gp-orbit-dot-2 {
+          animation-delay: -1.5s;
+          background: rgba(253,230,138,0.6);
+        }
+        .gp-core {
+          width: 10px; height: 10px;
+          border-radius: 50%;
+          background: #ffffff;
+          border: 2px solid #fbbf24;
+          box-shadow: 0 0 0 1px rgba(251,191,36,0.3), 0 0 8px 2px rgba(251,191,36,0.5);
+          transition: transform 0.2s ease, box-shadow 0.2s ease;
+          position: relative; z-index: 2;
+        }
+        .gp-marker-wrap:hover .gp-core {
+          transform: scale(1.35);
+          box-shadow: 0 0 0 2px rgba(251,191,36,0.5), 0 0 14px 4px rgba(251,191,36,0.7);
+        }
+      `}</style>
+
       <div className="container mx-auto px-4 md:px-6">
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-14"
         >
-          <div className="inline-flex items-center px-3 py-1 bg-indigo-50 rounded-full text-indigo-600 font-medium text-sm mb-3">
-            STRATEGIC LOCATIONS
+          <div className="inline-flex items-center gap-2 mb-3">
+            <span className="h-px w-6 bg-amber-500/60" />
+            <span className="text-[11px] font-semibold tracking-[0.18em] uppercase text-amber-600">
+              Global Footprint
+            </span>
+            <span className="h-px w-6 bg-amber-500/60" />
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Our Presence in India
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3 tracking-tight">
+            Our Global Presence
           </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Terafence India provides cutting-edge cybersecurity solutions across
-            the nation, with a focus on protecting India&apos;s critical
-            infrastructure.
+          <p className="text-base text-gray-500 max-w-2xl mx-auto leading-relaxed">
+            Terafence secures critical infrastructure across continents — active
+            across 6 countries worldwide.
           </p>
         </motion.div>
 
-        <div className="relative w-full h-[500px] overflow-hidden">
-          <div className="absolute top-8 right-8 w-24 h-24 bg-blue-400/10 rounded-full blur-xl"></div>
-          <div className="absolute bottom-8 left-8 w-24 h-24 bg-indigo-400/10 rounded-full blur-xl"></div>
+        {/* World Map */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <div className="relative w-full h-[500px] overflow-hidden">
+            {/* Ambient glows */}
+            <div className="absolute top-10 right-10 w-32 h-32 bg-amber-300/10 rounded-full blur-2xl pointer-events-none" />
+            <div className="absolute bottom-10 left-10 w-32 h-32 bg-blue-300/10 rounded-full blur-2xl pointer-events-none" />
 
-          <Image
-            src="/images/about/map.svg"
-            alt="Map of India"
-            fill
-            className="object-contain p-6"
-          />
+            <Image
+              src="/images/about/map.svg"
+              alt="Terafence Global Presence"
+              fill
+              className="object-contain p-6"
+            />
 
-          {locations.map((location) => (
-            <div key={location.id}>
-              <motion.div
-                className="absolute cursor-pointer"
-                style={{
-                  left: `${location.x}%`,
-                  top: `${location.y}%`,
-                }}
-                onMouseEnter={() => setActiveLocation(location.id)}
-                onMouseLeave={() => setActiveLocation(null)}
-              >
-                <div className="relative">
-                  <div className="w-5 h-5 bg-blue-600 rounded-full z-10 relative cursor-pointer"></div>
-                  <div className="absolute -inset-1 bg-rose-400 rounded-full opacity-50 animate-ping"></div>
-                </div>
-              </motion.div>
+            {mapLocations.map((location, i) => (
+              <div key={location.id}>
+                <motion.div
+                  initial={{ scale: 0, opacity: 0 }}
+                  whileInView={{ scale: 1, opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 220,
+                    delay: 0.35 + i * 0.08,
+                  }}
+                  className="gp-marker-wrap"
+                  style={{
+                    left: `${location.x}%`,
+                    top: `${location.y}%`,
+                    transform: "translate(-50%, -50%)",
+                  }}
+                  onMouseEnter={() => setActiveLocation(location.id)}
+                  onMouseLeave={() => setActiveLocation(null)}
+                >
+                  {/* Ripple rings */}
+                  <div className="gp-ripple gp-ripple-a" />
+                  <div className="gp-ripple gp-ripple-b" />
+                  <div className="gp-ripple gp-ripple-c" />
 
-              <AnimatePresence>
-                {activeLocation === location.id && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 0 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 0 }}
-                    className="absolute bg-white px-4 py-2 rounded-lg shadow-lg z-5 border border-blue-100"
-                    style={{
-                      left: `${location.x}%`,
-                      top: `${location.y - 6}%`,
-                      transform: "translate(-100%, -100%)",
-                    }}
-                  >
-                    <p className="text-blue-700 font-bold whitespace-nowrap">
-                      {location.name}
-                    </p>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-          ))}
-        </div>
+                  {/* Orbiting sparkle dots */}
+                  <div className="gp-orbit-dot" />
+                  <div className="gp-orbit-dot gp-orbit-dot-2" />
+
+                  {/* Core white dot with amber ring */}
+                  <div className="gp-core" />
+                </motion.div>
+
+                {/* Tooltip */}
+                <AnimatePresence>
+                  {activeLocation === location.id && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 6, scale: 0.94 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 6, scale: 0.94 }}
+                      transition={{ duration: 0.15 }}
+                      className="absolute z-20 pointer-events-none"
+                      style={{
+                        left: `${location.x}%`,
+                        top: `calc(${location.y}% - 26px)`,
+                        transform: "translate(-50%, -100%)",
+                      }}
+                    >
+                      <div className="relative bg-gray-900/95 backdrop-blur-sm border border-amber-500/30 rounded-xl px-3.5 py-2 shadow-xl shadow-black/20">
+                        <div className="absolute top-0 left-4 right-4 h-px bg-gradient-to-r from-transparent via-amber-400/60 to-transparent rounded-full" />
+                        <p className="text-amber-300 font-semibold text-[13px] whitespace-nowrap tracking-wide">
+                          {location.name}
+                        </p>
+                        {location.sub && (
+                          <p className="text-gray-400 text-[11px] whitespace-nowrap mt-0.5">
+                            {location.sub}
+                          </p>
+                        )}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );
@@ -597,9 +705,7 @@ function TerafencePlatform() {
                 <span className="w-2 h-2 bg-blue-300 rounded-full mr-2 animate-pulse"></span>
                 COMPREHENSIVE PROTECTION
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Terafence
-              </h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Terafence</h2>
               <p className="text-lg text-blue-100">
                 Our product combines the unidirectional gateway security to
                 provide comprehensive protection against threats, even in the
