@@ -326,11 +326,11 @@ function GlobalPresence() {
 
    const mapLocations = [
     { id: "dallas", name: "Dallas", sub: "United States", x: 26, y: 43 },
-    { id: "newjersey", name: "New Jersey", sub: "United States", x: 31, y: 39 },
+    { id: "newjersey", name: "New Jersey", sub: "United States", x: 30, y: 39 },
     { id: "uk", name: "United Kingdom", sub: null, x: 47, y: 31 },
     { id: "italy", name: "Italy", sub: null, x: 50, y: 37 },
-    { id: "dubai", name: "Dubai", sub: "UAE", x: 56, y: 45 },
-    { id: "india", name: "India", sub: null, x: 64.5, y: 43 },
+    { id: "dubai", name: "Dubai", sub: "UAE", x: 59.8, y: 48 },
+    { id: "india", name: "India", sub: null, x: 65, y: 42.5 },
     { id: "singapore", name: "Singapore", sub: null, x: 70, y: 61 },
     { id: "thailand", name: "Thailand", sub: null, x: 71, y: 52 },
     { id: "indonesia", name: "Indonesia", sub: null, x: 74, y: 62 },
