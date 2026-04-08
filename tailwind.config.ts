@@ -1,9 +1,11 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 import type { Config } from "tailwindcss";
 import plugin from "tailwindcss/plugin";
+import { SERVICE_SAFELIST } from "./src/app/services/tailwind-safelist";
 
 export default {
 	darkMode: ["class"],
+	safelist: [...SERVICE_SAFELIST],
 	content: [
 		"./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
 		"./src/components/**/*.{js,ts,jsx,tsx,mdx}",

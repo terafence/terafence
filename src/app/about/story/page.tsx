@@ -4,14 +4,9 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import {
-  Lock,
-  Send,
   Search,
   Globe,
-  Camera, 
-  Server, 
-  Activity,
-  Heart,
+  Server,
   Shield,
   Cloud,
   FileDigit,
@@ -21,6 +16,10 @@ import {
   Flag,
   ChevronRight,
   ArrowRight,
+  Lightbulb,
+  Monitor,
+  Network,
+  Link2,
 } from "lucide-react";
 import Navbar from "@/components/marketing/navbar";
 import Footer from "@/components/marketing/footer";
@@ -32,9 +31,10 @@ export default function SolutionsPage() {
       <Navbar />
       <main className="flex flex-col min-h-screen bg-slate-50 overflow-hidden">
         <SolutionsHero />
+        <ServicesOverview />
         <CybersecurityPhilosophy />
         <IndiaPresence />
-        <SolutionsGrid />
+        {/* <SolutionsGrid /> */}
         <TerafencePlatform />
       </main>
       <Footer />
@@ -69,7 +69,7 @@ function SolutionsHero() {
               environments in the modern threat landscape.
             </p>
             <div className="flex flex-wrap gap-4 pt-2">
-              <Link href="/solutions" passHref>
+              <Link href="/services/cybersecurity" passHref>
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -79,13 +79,13 @@ function SolutionsHero() {
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </motion.button>
               </Link>
-              <Link href="/solutions" passHref>
+              <Link href="/services/advisory" passHref>
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="bg-blue-700/30 text-white border border-blue-400/30 backdrop-blur-sm px-6 py-3 rounded-full font-bold text-base hover:bg-blue-600/40 transition duration-300"
                 >
-                  Know More
+                  Advisory & Consulting
                 </motion.button>
               </Link>
             </div>
@@ -132,7 +132,7 @@ function CybersecurityPhilosophy() {
             OUR CYBERSECURITY PHILOSOPHY
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-            Ensure data flows only one way.  <br /> Protect every device.
+            Ensure data flows only one way. <br /> Protect every device.
           </h2>
 
           <div className="max-w-3xl mx-auto">
@@ -157,6 +157,163 @@ function CybersecurityPhilosophy() {
               </Link>
             </motion.div>
           </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── NEW: Services Overview Section ─── */
+function ServicesOverview() {
+  const services = [
+    {
+      icon: <Lightbulb className="h-7 w-7" />,
+      title: "Advisory & Consulting",
+      description:
+        "Strategic IT advisory covering data migration, workplace experience consulting, technology transformation, and cost optimization — aligned to your mission-critical goals.",
+      href: "/services/advisory",
+      color: "from-emerald-500 to-teal-500",
+      bgLight: "bg-emerald-50",
+      textColor: "text-emerald-600",
+      stats: "200+ enterprises advised",
+    },
+    {
+      icon: <Cloud className="h-7 w-7" />,
+      title: "Cloud Services",
+      description:
+        "Multi-cloud migration, infrastructure management, and FinOps optimization across AWS, Azure, and GCP — with security built into every layer.",
+      href: "/services/cloud",
+      color: "from-blue-500 to-cyan-500",
+      bgLight: "bg-blue-50",
+      textColor: "text-blue-600",
+      stats: "99.99% uptime SLA",
+    },
+    {
+      icon: <Monitor className="h-7 w-7" />,
+      title: "Workplace Services",
+      description:
+        "Digital workspace transformation — endpoint management, unified communications, AI-powered service desk, and zero-trust endpoint security.",
+      href: "/services/workplace",
+      color: "from-violet-500 to-purple-500",
+      bgLight: "bg-violet-50",
+      textColor: "text-violet-600",
+      stats: "40% productivity increase",
+    },
+    {
+      icon: <Network className="h-7 w-7" />,
+      title: "Network Services",
+      description:
+        "Enterprise and tactical network design — campus LAN, SD-WAN, data center fabrics, and military-grade encrypted communications for field operations.",
+      href: "/services/network",
+      color: "from-amber-500 to-orange-500",
+      bgLight: "bg-amber-50",
+      textColor: "text-amber-600",
+      stats: "500+ sites deployed",
+    },
+    {
+      icon: <Shield className="h-7 w-7" />,
+      title: "Cybersecurity",
+      description:
+        "24/7 SOC operations, hardware data diode solutions, OT/ICS security, penetration testing, and threat intelligence — protecting what matters most.",
+      href: "/services/cybersecurity",
+      color: "from-red-500 to-rose-500",
+      bgLight: "bg-red-50",
+      textColor: "text-red-600",
+      stats: "24/7 SOC operations",
+    },
+    {
+      icon: <Link2 className="h-7 w-7" />,
+      title: "Service Integration",
+      description:
+        "SIAM framework implementation, multi-vendor orchestration, unified ITSM, and automation-first service delivery across all IT towers.",
+      href: "/services/integration",
+      color: "from-teal-500 to-emerald-500",
+      bgLight: "bg-teal-50",
+      textColor: "text-teal-600",
+      stats: "50+ vendors integrated",
+    },
+  ];
+
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: { staggerChildren: 0.08 },
+    },
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0 },
+  };
+
+  return (
+    <section className="w-full py-24 bg-gradient-to-b from-slate-50 to-white relative overflow-hidden">
+      <div className="container mx-auto px-4 md:px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <div className="inline-flex items-center px-3 py-1 bg-indigo-50 rounded-full text-indigo-600 font-medium text-sm mb-3">
+            OUR SERVICES
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            End-to-End IT & Security Services
+          </h2>
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            Beyond our core data diode technology, Terafence delivers a
+            comprehensive suite of IT services — from strategic advisory and
+            cloud transformation to 24/7 cybersecurity operations.
+          </p>
+        </motion.div>
+
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
+          {services.map((service, index) => (
+            <motion.div key={index} variants={item}>
+              <Link href={service.href} className="block h-full">
+                <motion.div
+                  whileHover={{
+                    scale: 1.02,
+                    boxShadow: "0 12px 24px -4px rgba(0, 0, 0, 0.1)",
+                  }}
+                  className="bg-white rounded-xl p-6 border border-gray-100 transition-all hover:border-gray-200 group shadow-sm h-full flex flex-col"
+                >
+                  <div className="flex items-start justify-between mb-4">
+                    <div
+                      className={`${service.bgLight} p-3 rounded-xl group-hover:scale-110 transition-transform duration-300`}
+                    >
+                      <div className={service.textColor}>{service.icon}</div>
+                    </div>
+                    <ArrowRight className="h-4 w-4 text-gray-300 group-hover:text-gray-600 group-hover:translate-x-1 transition-all duration-300" />
+                  </div>
+
+                  <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-blue-700 transition-colors">
+                    {service.title}
+                  </h3>
+                  <p className="text-gray-600 text-sm leading-relaxed flex-grow">
+                    {service.description}
+                  </p>
+
+                  <div className="mt-4 pt-4 border-t border-gray-100">
+                    <span
+                      className={`text-xs font-semibold ${service.textColor} uppercase tracking-wider`}
+                    >
+                      {service.stats}
+                    </span>
+                  </div>
+                </motion.div>
+              </Link>
+            </motion.div>
+          ))}
         </motion.div>
       </div>
     </section>
@@ -254,137 +411,143 @@ function IndiaPresence() {
   );
 }
 
-function SolutionsGrid() {
-  const solutions = [
-    {
-      icon: <Shield className="h-8 w-8 text-blue-600" />,
-      title: "SecureOT",
-      description:
-        "Physically isolates OT systems like SCADA, HMI, and PLCs, ensuring they remain inaccessible to unauthorized entities while maintaining necessary data flow.",
-    },
-    {
-      icon: <Camera className="h-8 w-8 text-blue-600" />,
-      title: "SecureCAM",
-      description: "Protects IP-CCTV networks and video storage by preventing unauthorized access, ensuring the integrity and confidentiality of surveillance data.",
-    },
-    {
-      icon: <Send className="h-8 w-8 text-blue-600" />,
-      title: "SecureIT",
-      description:
-        "Implements unidirectional data flow in IT networks, allowing data transmission without the risk of reverse communication or external commands.",
-    },
-    {
-      icon: <Heart className="h-8 w-8 text-blue-600" />,
-      title: "SecureCOM",
-      description: "Secures wearable medical devices like pacemakers and insulin injectors from unauthorized access, ensuring patient safety and device reliability.",
-    },
-    {
-      icon: <Server className="h-8 w-8 text-blue-600" />,
-      title: "Data Diode Technology",
-      description: "Ensures one-way data transfer, providing a physical barrier that prevents data breaches while allowing continuous data monitoring.",
-    },
-    {
-      icon: <Activity className="h-8 w-8 text-blue-600" />,
-      title: "Industrial IoT Protection",
-      description: "Safeguards industrial control systems and critical infrastructure from cyber threats without disrupting operational processes.",
-    },
-    {
-      icon: <Globe className="h-8 w-8 text-blue-600" />,
-      title: "Smart Building Security",
-      description: "Protects smart building components, such as elevators and air-conditioning systems, from cyber threats, ensuring occupant safety and system reliability.",
-    },
-    {
-      icon: <Lock className="h-8 w-8 text-blue-600" />,
-      title: "Unidirectional Secure Gateway",
-      description:
-        "Provides a hardware-based solution that isolates IP devices, preventing penetration while maintaining data outflow and device control.",
-    },
-  ];
+// function SolutionsGrid() {
+//   const solutions = [
+//     {
+//       icon: <Shield className="h-8 w-8 text-blue-600" />,
+//       title: "SecureOT",
+//       description:
+//         "Physically isolates OT systems like SCADA, HMI, and PLCs, ensuring they remain inaccessible to unauthorized entities while maintaining necessary data flow.",
+//     },
+//     {
+//       icon: <Camera className="h-8 w-8 text-blue-600" />,
+//       title: "SecureCAM",
+//       description:
+//         "Protects IP-CCTV networks and video storage by preventing unauthorized access, ensuring the integrity and confidentiality of surveillance data.",
+//     },
+//     {
+//       icon: <Send className="h-8 w-8 text-blue-600" />,
+//       title: "SecureIT",
+//       description:
+//         "Implements unidirectional data flow in IT networks, allowing data transmission without the risk of reverse communication or external commands.",
+//     },
+//     {
+//       icon: <Heart className="h-8 w-8 text-blue-600" />,
+//       title: "SecureCOM",
+//       description:
+//         "Secures wearable medical devices like pacemakers and insulin injectors from unauthorized access, ensuring patient safety and device reliability.",
+//     },
+//     {
+//       icon: <Server className="h-8 w-8 text-blue-600" />,
+//       title: "Data Diode Technology",
+//       description:
+//         "Ensures one-way data transfer, providing a physical barrier that prevents data breaches while allowing continuous data monitoring.",
+//     },
+//     {
+//       icon: <Activity className="h-8 w-8 text-blue-600" />,
+//       title: "Industrial IoT Protection",
+//       description:
+//         "Safeguards industrial control systems and critical infrastructure from cyber threats without disrupting operational processes.",
+//     },
+//     {
+//       icon: <Globe className="h-8 w-8 text-blue-600" />,
+//       title: "Smart Building Security",
+//       description:
+//         "Protects smart building components, such as elevators and air-conditioning systems, from cyber threats, ensuring occupant safety and system reliability.",
+//     },
+//     {
+//       icon: <Lock className="h-8 w-8 text-blue-600" />,
+//       title: "Unidirectional Secure Gateway",
+//       description:
+//         "Provides a hardware-based solution that isolates IP devices, preventing penetration while maintaining data outflow and device control.",
+//     },
+//   ];
 
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
+//   const container = {
+//     hidden: { opacity: 0 },
+//     show: {
+//       opacity: 1,
+//       transition: {
+//         staggerChildren: 0.1,
+//       },
+//     },
+//   };
 
-  const item = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0 },
-  };
+//   const item = {
+//     hidden: { opacity: 0, y: 20 },
+//     show: { opacity: 1, y: 0 },
+//   };
 
-  return (
-    <section className="w-full py-24 bg-white relative overflow-hidden">
-      <div className="absolute inset-0 bg-[url('/images/circuit-pattern.svg')] opacity-5"></div>
-      <div className="container mx-auto px-4 md:px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <div className="inline-flex items-center px-3 py-1 bg-blue-50 rounded-full text-blue-600 font-medium text-sm mb-3">
-            COMPREHENSIVE PROTECTION
-          </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-          Unidirectional Secure Gateway          </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Comprehensive solutions designed to protect critical
-            infrastructure across all environments.
-          </p>
-        </motion.div>
+//   return (
+//     <section className="w-full py-24 bg-white relative overflow-hidden">
+//       <div className="absolute inset-0 bg-[url('/images/circuit-pattern.svg')] opacity-5"></div>
+//       <div className="container mx-auto px-4 md:px-6">
+//         <motion.div
+//           initial={{ opacity: 0, y: 20 }}
+//           whileInView={{ opacity: 1, y: 0 }}
+//           viewport={{ once: true }}
+//           transition={{ duration: 0.6 }}
+//           className="text-center mb-12"
+//         >
+//           <div className="inline-flex items-center px-3 py-1 bg-blue-50 rounded-full text-blue-600 font-medium text-sm mb-3">
+//             COMPREHENSIVE PROTECTION
+//           </div>
+//           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+//             Unidirectional Secure Gateway
+//           </h2>
+//           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+//             Comprehensive solutions designed to protect critical infrastructure
+//             across all environments.
+//           </p>
+//         </motion.div>
 
-        <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
-        >
-          {solutions.map((solution, index) => (
-            <motion.div
-              key={index}
-              variants={item}
-              whileHover={{
-                scale: 1.03,
-                boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1)",
-              }}
-              className="bg-white rounded-xl p-6 border border-gray-100 transition-all hover:border-blue-300 group shadow hover:shadow-blue-100"
-            >
-              <div className="flex flex-col items-center text-center space-y-4">
-                <div className="bg-blue-100 p-4 rounded-lg mb-2">
-                  {solution.icon}
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
-                  {solution.title}
-                </h3>
-                <p className="text-gray-600 text-sm">{solution.description}</p>
-                <div className="opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="inline-flex items-center text-blue-600 font-semibold text-sm">
-                    Learn more
-                    <ArrowRight className="ml-1 h-3 w-3" />
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
-      </div>
-    </section>
-  );
-}
+//         <motion.div
+//           variants={container}
+//           initial="hidden"
+//           whileInView="show"
+//           viewport={{ once: true }}
+//           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+//         >
+//           {solutions.map((solution, index) => (
+//             <motion.div
+//               key={index}
+//               variants={item}
+//               whileHover={{
+//                 scale: 1.03,
+//                 boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1)",
+//               }}
+//               className="bg-white rounded-xl p-6 border border-gray-100 transition-all hover:border-blue-300 group shadow hover:shadow-blue-100"
+//             >
+//               <div className="flex flex-col items-center text-center space-y-4">
+//                 <div className="bg-blue-100 p-4 rounded-lg mb-2">
+//                   {solution.icon}
+//                 </div>
+//                 <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
+//                   {solution.title}
+//                 </h3>
+//                 <p className="text-gray-600 text-sm">{solution.description}</p>
+//                 <div className="opacity-0 group-hover:opacity-100 transition-opacity">
+//                   <div className="inline-flex items-center text-blue-600 font-semibold text-sm">
+//                     Learn more
+//                     <ArrowRight className="ml-1 h-3 w-3" />
+//                   </div>
+//                 </div>
+//               </div>
+//             </motion.div>
+//           ))}
+//         </motion.div>
+//       </div>
+//     </section>
+//   );
+// }
 
 function TerafencePlatform() {
   const techStack = [
     { icon: <Shield className="h-5 w-5" />, name: "Data Diode" },
-    { icon: <FileDigit className="h-5 w-5" />, name: "BSG" },
-    { icon: <Box className="h-5 w-5" />, name: "1-URP" },
-    { icon: <AlertTriangle className="h-5 w-5" />, name: "121" },
-    { icon: <Search className="h-5 w-5" />, name: "Syslog Management" },
+    { icon: <FileDigit className="h-5 w-5" />, name: "TFG-BSG" },
+    { icon: <Box className="h-5 w-5" />, name: "TFG-1URP" },
+    { icon: <AlertTriangle className="h-5 w-5" />, name: "TFG-121" },
+    { icon: <Search className="h-5 w-5" />, name: "Syslog Transfer" },
     { icon: <Globe className="h-5 w-5" />, name: "Threat Prevention" },
     { icon: <FileJson className="h-5 w-5" />, name: "Cybersecurity" },
     { icon: <Flag className="h-5 w-5" />, name: "Origin Security" },
@@ -394,6 +557,24 @@ function TerafencePlatform() {
     { icon: <Shield className="h-5 w-5" />, name: "Air-Gapped" },
     { icon: <Server className="h-5 w-5" />, name: "On-Premise" },
     { icon: <Cloud className="h-5 w-5" />, name: "Data Diode" },
+  ];
+
+  const serviceHighlights = [
+    {
+      label: "Advisory & Cloud",
+      desc: "Strategy, migration & FinOps",
+      href: "/services/advisory",
+    },
+    {
+      label: "Network & Security",
+      desc: "SD-WAN, SOC & data diodes",
+      href: "/services/network",
+    },
+    {
+      label: "Service Integration",
+      desc: "SIAM & multi-vendor mgmt",
+      href: "/services/integration",
+    },
   ];
 
   return (
@@ -417,12 +598,12 @@ function TerafencePlatform() {
                 COMPREHENSIVE PROTECTION
               </div>
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Terafence 
+                Terafence
               </h2>
               <p className="text-lg text-blue-100">
                 Our product combines the unidirectional gateway security to
-                provide comprehensive protection against threats, even
-                in the most sensitive environments.
+                provide comprehensive protection against threats, even in the
+                most sensitive environments.
               </p>
             </div>
 
@@ -473,14 +654,39 @@ function TerafencePlatform() {
               </div>
             </div>
 
-            <motion.button
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-              className="bg-gradient-to-r from-yellow-400 to-amber-500 text-blue-900 px-6 py-3 rounded-full font-bold text-base shadow-lg hover:shadow-yellow-400/30 transition duration-300 flex items-center"
-            >
-              Request a Demo
-              <ChevronRight className="ml-2 h-4 w-4" />
-            </motion.button>
+            {/* Services quick-links woven into the platform section */}
+            <div>
+              <h4 className="text-xl font-semibold mb-4 flex items-center">
+                <div className="w-1 h-6 bg-yellow-400 rounded-full mr-3"></div>
+                Our Services
+              </h4>
+              <div className="flex flex-wrap gap-3">
+                {serviceHighlights.map((svc, index) => (
+                  <Link key={index} href={svc.href}>
+                    <motion.div
+                      whileHover={{ scale: 1.03 }}
+                      className="bg-yellow-400/10 px-4 py-3  mb-5 rounded-lg border border-yellow-400/20 hover:border-yellow-400/40 transition-colors cursor-pointer"
+                    >
+                      <span className="text-sm font-semibold text-yellow-300">
+                        {svc.label}
+                      </span>
+                      <p className="text-xs text-blue-200 mt-0.5">{svc.desc}</p>
+                    </motion.div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            <Link href="/contact/contact">
+              <motion.button
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                className="bg-gradient-to-r from-yellow-400 to-amber-500 text-blue-900 px-6 py-3 rounded-full font-bold text-base shadow-lg hover:shadow-yellow-400/30 transition duration-300 flex items-center"
+              >
+                Request a Demo
+                <ChevronRight className="ml-2 h-4 w-4" />
+              </motion.button>
+            </Link>
           </motion.div>
 
           <motion.div

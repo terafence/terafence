@@ -40,6 +40,8 @@ import {
   IconPlugConnected,
   IconRadar,
   IconTrophy,
+  IconEye,
+  IconBulbFilled,
   IconArrowUpRight,
   IconCircuitDiode,
   IconArrowRight,
@@ -793,41 +795,55 @@ export default function ContactForm() {
               </h3>
 
               <div className="space-y-2.5 feature-card-container">
-                <FeatureCard
-                  icon={<IconCircuitDiode className="h-6 w-6 text-blue-600" />}
-                  title="Hardware-Enforced Isolation"
-                  description="Air-gap level protection through physical, hardware-based barriers that ensure data security with no software vulnerabilities."
-                  delay={0}
-                />
+  <FeatureCard
+    icon={<IconCircuitDiode className="h-6 w-6 text-blue-600" />}
+    title="Cybersecurity & Data Protection"
+    description="Enterprise-grade security solutions including SOC operations, XDR/EDR platforms, IAM, PAM, and hardware-enforced data diode technology to protect critical infrastructure and digital assets."
+    delay={0}
+  />
 
-                <FeatureCard
-                  icon={<IconArrowUpRight className="h-6 w-6 text-blue-600" />}
-                  title="Unidirectional Data Flow"
-                  description="Guarantees one-way data transmission using data diode technology, completely eliminating reverse-channel threats."
-                  delay={1}
-                />
+  <FeatureCard
+    icon={<IconArrowUpRight className="h-6 w-6 text-blue-600" />}
+    title="Cloud & Platform Engineering"
+    description="Design, migration, and management of scalable cloud platforms across AWS, Azure, and GCP with cloud-native architectures, DevOps pipelines, and FinOps optimization."
+    delay={1}
+  />
 
-                <FeatureCard
-                  icon={<IconPlugConnected className="h-6 w-6 text-blue-600" />}
-                  title="Plug & Play Deployment"
-                  description="Simple installation with zero configuration – ready to secure your environment out of the box without network downtime."
-                  delay={2}
-                />
+  <FeatureCard
+    icon={<IconPlugConnected className="h-6 w-6 text-blue-600" />}
+    title="Network & Infrastructure Services"
+    description="Enterprise networking solutions including SD-WAN, secure data center networks, zero-trust architectures, and global connectivity across distributed environments."
+    delay={2}
+  />
 
-                <FeatureCard
-                  icon={<IconBoltFilled className="h-6 w-6 text-blue-600" />}
-                  title="Protocol-Aware Gateways"
-                  description="Supports a wide range of industrial protocols without needing protocol converters or software agents."
-                  delay={4}
-                />
+  <FeatureCard
+    icon={<IconBoltFilled className="h-6 w-6 text-blue-600" />}
+    title="Modern Workplace & Collaboration"
+    description="Enable secure digital workplaces with unified collaboration platforms, endpoint management, identity-driven security, and enterprise service desk operations."
+    delay={3}
+  />
 
-                <FeatureCard
-                  icon={<IconRadar className="h-6 w-6 text-blue-600" />}
-                  title="No IP Address Exposure"
-                  description="Prevents any exposure of internal systems by design – Terafence devices do not require IPs, blocking unauthorized network access."
-                  delay={5}
-                />
-              </div>
+  <FeatureCard
+    icon={<IconRadar className="h-6 w-6 text-blue-600" />}
+    title="ITSM, AIOps & Service Integration"
+    description="Integrate ITSM platforms, observability tools, and AIOps engines to deliver unified service management, automation, and end-to-end operational visibility."
+    delay={4}
+  />
+
+  <FeatureCard
+    icon={<IconBulbFilled className="h-6 w-6 text-blue-600" />}
+    title="Technology Advisory & Transformation"
+    description="Strategic consulting for enterprise IT modernization, architecture design, cloud adoption, and digital transformation initiatives across global organizations."
+    delay={5}
+  />
+
+  <FeatureCard
+    icon={<IconEye className="h-6 w-6 text-blue-600" />}
+    title="Observability & Performance Monitoring"
+    description="Full-stack observability across applications, infrastructure, and networks using modern APM and monitoring platforms to ensure reliability and performance at scale."
+    delay={6}
+  />
+</div>
             </motion.div>
 
             {/* Support Button */}
