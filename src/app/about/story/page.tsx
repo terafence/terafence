@@ -321,90 +321,113 @@ function ServicesOverview() {
 }
 
 function GlobalPresence() {
+
   const [activeLocation, setActiveLocation] = useState<string | null>(null);
 
-  const mapLocations = [
-    { id: "usa", name: "United States", sub: null, x: 36, y: 42 },
-    { id: "italy", name: "Italy", sub: null, x: 50, y: 38 },
-    { id: "japan", name: "Japan", sub: null, x: 67, y: 42 },
-    { id: "thailand", name: "Thailand", sub: null, x: 62, y: 52 },
-    { id: "indonesia", name: "Indonesia", sub: null, x: 65, y: 61 },
-    { id: "india", name: "India", sub: null, x: 59, y: 48 },
+   const mapLocations = [
+    { id: "dallas", name: "Dallas", sub: "United States", x: 26, y: 43 },
+    { id: "newjersey", name: "New Jersey", sub: "United States", x: 31, y: 39 },
+    { id: "uk", name: "United Kingdom", sub: null, x: 47, y: 31 },
+    { id: "italy", name: "Italy", sub: null, x: 50, y: 37 },
+    { id: "dubai", name: "Dubai", sub: "UAE", x: 56, y: 45 },
+    { id: "india", name: "India", sub: null, x: 64.5, y: 43 },
+    { id: "singapore", name: "Singapore", sub: null, x: 70, y: 61 },
+    { id: "thailand", name: "Thailand", sub: null, x: 71, y: 52 },
+    { id: "indonesia", name: "Indonesia", sub: null, x: 74, y: 62 },
+    { id: "japan", name: "Japan", sub: null, x: 78, y: 41 },
   ];
 
   return (
     <section className="w-full py-24 bg-gradient-to-b from-slate-50 to-slate-100 relative overflow-hidden">
+
       <div className="absolute inset-0 bg-[url('/images/topo.svg')] opacity-5" />
 
       <style>{`
+
         @keyframes gp-ripple-a {
-          0%   { transform: translate(-50%,-50%) scale(1);   opacity: 0.7; }
+          0% { transform: translate(-50%,-50%) scale(1); opacity: 0.7; }
           100% { transform: translate(-50%,-50%) scale(3.2); opacity: 0; }
         }
+
         @keyframes gp-ripple-b {
-          0%   { transform: translate(-50%,-50%) scale(1);   opacity: 0.5; }
+          0% { transform: translate(-50%,-50%) scale(1); opacity: 0.5; }
           100% { transform: translate(-50%,-50%) scale(2.4); opacity: 0; }
         }
+
         @keyframes gp-ripple-c {
-          0%   { transform: translate(-50%,-50%) scale(1);   opacity: 0.35; }
+          0% { transform: translate(-50%,-50%) scale(1); opacity: 0.35; }
           100% { transform: translate(-50%,-50%) scale(1.8); opacity: 0; }
         }
+
         @keyframes gp-orbit {
-          0%   { transform: translate(-50%,-50%) rotate(0deg)   translateX(9px) rotate(0deg); }
+          0% { transform: translate(-50%,-50%) rotate(0deg) translateX(9px) rotate(0deg); }
           100% { transform: translate(-50%,-50%) rotate(360deg) translateX(9px) rotate(-360deg); }
         }
-        .gp-marker-wrap { position: absolute; z-index: 10; cursor: pointer; }
+
+        .gp-marker-wrap {
+          position: absolute;
+          z-index: 10;
+          cursor: pointer;
+        }
+
         .gp-ripple {
           position: absolute;
           border-radius: 50%;
-          width: 10px; height: 10px;
-          top: 50%; left: 50%;
-          pointer-events: none;
+          width: clamp(8px,0.8vw,12px);
+          height: clamp(8px,0.8vw,12px);
+          top: 50%;
+          left: 50%;
         }
+
         .gp-ripple-a {
           background: rgba(251,191,36,0.55);
           animation: gp-ripple-a 2.2s ease-out infinite;
         }
+
         .gp-ripple-b {
           background: rgba(251,191,36,0.4);
           animation: gp-ripple-b 2.2s ease-out infinite;
           animation-delay: 0.55s;
         }
+
         .gp-ripple-c {
           background: rgba(255,255,255,0.25);
           animation: gp-ripple-c 2.2s ease-out infinite;
           animation-delay: 1.1s;
         }
+
         .gp-orbit-dot {
           position: absolute;
-          width: 3px; height: 3px;
+          width: 3px;
+          height: 3px;
           background: #fde68a;
           border-radius: 50%;
-          top: 50%; left: 50%;
+          top: 50%;
+          left: 50%;
           animation: gp-orbit 3s linear infinite;
-          pointer-events: none;
           box-shadow: 0 0 4px 1px rgba(253,230,138,0.9);
         }
+
         .gp-orbit-dot-2 {
           animation-delay: -1.5s;
           background: rgba(253,230,138,0.6);
         }
+
         .gp-core {
-          width: 10px; height: 10px;
+          width: clamp(8px,0.8vw,12px);
+          height: clamp(8px,0.8vw,12px);
           border-radius: 50%;
           background: #ffffff;
           border: 2px solid #fbbf24;
           box-shadow: 0 0 0 1px rgba(251,191,36,0.3), 0 0 8px 2px rgba(251,191,36,0.5);
-          transition: transform 0.2s ease, box-shadow 0.2s ease;
-          position: relative; z-index: 2;
+          position: relative;
+          z-index: 2;
         }
-        .gp-marker-wrap:hover .gp-core {
-          transform: scale(1.35);
-          box-shadow: 0 0 0 2px rgba(251,191,36,0.5), 0 0 14px 4px rgba(251,191,36,0.7);
-        }
+
       `}</style>
 
       <div className="container mx-auto px-4 md:px-6">
+
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -413,6 +436,7 @@ function GlobalPresence() {
           transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
+
           <div className="inline-flex items-center gap-2 mb-3">
             <span className="h-px w-6 bg-amber-500/60" />
             <span className="text-[11px] font-semibold tracking-[0.18em] uppercase text-amber-600">
@@ -420,36 +444,39 @@ function GlobalPresence() {
             </span>
             <span className="h-px w-6 bg-amber-500/60" />
           </div>
+
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3 tracking-tight">
             Our Global Presence
           </h2>
+
           <p className="text-base text-gray-500 max-w-2xl mx-auto leading-relaxed">
-            Terafence secures critical infrastructure across continents — active
-            across 6 countries worldwide.
+            Terafence secures critical infrastructure across continents — active across
+            multiple strategic locations worldwide.
           </p>
+
         </motion.div>
 
-        {/* World Map */}
+        {/* Map */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <div className="relative w-full h-[500px] overflow-hidden">
-            {/* Ambient glows */}
-            <div className="absolute top-10 right-10 w-32 h-32 bg-amber-300/10 rounded-full blur-2xl pointer-events-none" />
-            <div className="absolute bottom-10 left-10 w-32 h-32 bg-blue-300/10 rounded-full blur-2xl pointer-events-none" />
+
+          <div className="relative w-full max-w-[1200px] mx-auto aspect-[2/1] overflow-hidden">
 
             <Image
               src="/images/about/map.svg"
               alt="Terafence Global Presence"
               fill
-              className="object-contain p-6"
+              className="object-contain"
             />
 
             {mapLocations.map((location, i) => (
               <div key={location.id}>
+
+                {/* Marker */}
                 <motion.div
                   initial={{ scale: 0, opacity: 0 }}
                   whileInView={{ scale: 1, opacity: 1 }}
@@ -468,20 +495,17 @@ function GlobalPresence() {
                   onMouseEnter={() => setActiveLocation(location.id)}
                   onMouseLeave={() => setActiveLocation(null)}
                 >
-                  {/* Ripple rings */}
                   <div className="gp-ripple gp-ripple-a" />
                   <div className="gp-ripple gp-ripple-b" />
                   <div className="gp-ripple gp-ripple-c" />
 
-                  {/* Orbiting sparkle dots */}
                   <div className="gp-orbit-dot" />
                   <div className="gp-orbit-dot gp-orbit-dot-2" />
 
-                  {/* Core white dot with amber ring */}
                   <div className="gp-core" />
                 </motion.div>
 
-                {/* Tooltip */}
+                {/* Hover Tooltip */}
                 <AnimatePresence>
                   {activeLocation === location.id && (
                     <motion.div
@@ -496,29 +520,38 @@ function GlobalPresence() {
                         transform: "translate(-50%, -100%)",
                       }}
                     >
+
                       <div className="relative bg-gray-900/95 backdrop-blur-sm border border-amber-500/30 rounded-xl px-3.5 py-2 shadow-xl shadow-black/20">
+
                         <div className="absolute top-0 left-4 right-4 h-px bg-gradient-to-r from-transparent via-amber-400/60 to-transparent rounded-full" />
+
                         <p className="text-amber-300 font-semibold text-[13px] whitespace-nowrap tracking-wide">
                           {location.name}
                         </p>
+
                         {location.sub && (
                           <p className="text-gray-400 text-[11px] whitespace-nowrap mt-0.5">
                             {location.sub}
                           </p>
                         )}
+
                       </div>
+
                     </motion.div>
                   )}
                 </AnimatePresence>
+
               </div>
             ))}
+
           </div>
+
         </motion.div>
+
       </div>
     </section>
   );
 }
-
 // function SolutionsGrid() {
 //   const solutions = [
 //     {
