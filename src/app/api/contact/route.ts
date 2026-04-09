@@ -26,7 +26,7 @@ const SMTP_FROM_EMAIL = 'info@terafence.in';
 
 // Internal email recipients
 const INTERNAL_TO = 'info@terafence.in';
-const INTERNAL_CC = 'akshat@terafence.in, jose@terafence.in, shruti@terafence.in, yash@terafence.in';
+const INTERNAL_CC = 'shruti@terafence.in, yash@terafence.in';
 
 // ============================================
 // SEQUENTIAL TICKET COUNTER
