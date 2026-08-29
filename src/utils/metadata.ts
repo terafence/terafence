@@ -16,8 +16,8 @@ interface MetadataProps {
 }
 
 export const generateMetadata = ({
-    title = `Terafence Private Limited | Made in India Data Diode Solutions & Cybersecurity | FPGA Data Diode`,
-    description = `Terafence Private Limited is India's leading Data Diode manufacturer, offering advanced cybersecurity solutions for critical infrastructure. Protect real-time OT data with our hardware-based, FPGA-powered Data Diode technology. Secure one-way data transfer for high-security applications. With patent-protected solutions, Terafence ensures impenetrable protection for IoT and OT devices. Made in India. Trusted by industries for data diode security and network defense.
+    title = `Terafence Limited | Made in India Data Diode Solutions & Cybersecurity | FPGA Data Diode`,
+    description = `Terafence Limited is India's leading Data Diode manufacturer, offering advanced cybersecurity solutions for critical infrastructure. Protect real-time OT data with our hardware-based, FPGA-powered Data Diode technology. Secure one-way data transfer for high-security applications. With patent-protected solutions, Terafence ensures impenetrable protection for IoT and OT devices. Made in India. Trusted by industries for data diode security and network defense.
  `,
     icons = [
         {
@@ -80,7 +80,7 @@ export const generateMetadata = ({
         "Non-Routable Communication Path",
         "Government Approved Cybersecurity",
         "Defense Cybersecurity Solution",
-        "Terafence Private Limited Gurugram",
+        "Terafence Limited Gurugram",
         "Made in India",
         "Government of India",
         "Power sector",
@@ -129,7 +129,7 @@ export const generateMetadata = ({
         
         // Added Keywords - Location & India Specific
         "Terafence India",
-        "Terafence Private Limited India",
+        "Terafence Limited India",
         "Indian Cybersecurity Company",
         "Indian Data Diode Manufacturer",
         "Gurugram Cybersecurity Company",
@@ -549,7 +549,7 @@ export const generateMetadata = ({
         "Indian SCADA Security Solutions",
         "IoT Security in Smart Cities India",
     ],
-    author = process.env.NEXT_PUBLIC_AUTHOR_NAME || "Terafence Private Limited India",
+    author = process.env.NEXT_PUBLIC_AUTHOR_NAME || "Terafence Limited India",
     locale = "en-IN",
 }: MetadataProps = {}): Metadata => {
     const metadataBase = new URL(process.env.NEXT_PUBLIC_APP_URL || "https://www.terafence.in/");
@@ -559,14 +559,14 @@ export const generateMetadata = ({
     return {
         metadataBase,
         title: {
-            template: `%s | ${process.env.NEXT_PUBLIC_APP_NAME || "Terafence Private Limited India"}`,
+            template: `%s | ${process.env.NEXT_PUBLIC_APP_NAME || "Terafence Limited India"}`,
             default: title,
         },
         description,
         keywords,
         authors: [{ name: author }],
         creator: author,
-        publisher: process.env.NEXT_PUBLIC_APP_NAME || "Terafence Private Limited India",
+        publisher: process.env.NEXT_PUBLIC_APP_NAME || "Terafence Limited India",
         formatDetection: {
             email: false,
             address: false,
@@ -584,7 +584,7 @@ export const generateMetadata = ({
             type: "website",
             title,
             description,
-            siteName: "Terafence Private Limited India",
+            siteName: "Terafence Limited India",
             url: metadataBase.href,
             locale: locale,
             countryName: "India",
@@ -593,7 +593,7 @@ export const generateMetadata = ({
                     url: "/images/og-image.png",
                     width: 1200,
                     height: 630,
-                    alt: "Terafence Private Limited India - Leading Data Diode Technology Manufacturer",
+                    alt: "Terafence Limited India - Leading Data Diode Technology Manufacturer",
                 },
             ],
             determiner: "the",
@@ -628,7 +628,7 @@ export const generateMetadata = ({
             
         },
         
-        applicationName: "Terafence Private Limited India",
+        applicationName: "Terafence Limited India",
         category: "Cybersecurity",
         classification: "Data Diode Technology, Unidirectional Gateway, Cybersecurity Solutions",
         referrer: "origin-when-cross-origin",
@@ -650,8 +650,8 @@ export const generateMetadata = ({
             'dc.source': 'https://terafence.in',
             'dc.language': 'en-IN',
             'dc.coverage': 'India',
-            'dc.creator': 'Terafence Private Limited India',
-            'dc.publisher': 'Terafence Private Limited India',
+            'dc.creator': 'Terafence Limited India',
+            'dc.publisher': 'Terafence Limited India',
             'dc.subject': 'Data Diode, Unidirectional Gateway, Cybersecurity, OT Security',
             'dc.rights': 'All rights reserved',
             'og:street-address': '209, Suncity Success Tower, Sector-65',

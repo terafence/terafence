@@ -1,8 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { motion } from "framer-motion";
 import {
   Search,
   Globe,
@@ -34,7 +33,6 @@ export default function SolutionsPage() {
         <ServicesOverview />
         <CybersecurityPhilosophy />
         <GlobalPresence />
-        {/* <SolutionsGrid /> */}
         <TerafencePlatform />
       </main>
       <Footer />
@@ -44,36 +42,36 @@ export default function SolutionsPage() {
 
 function SolutionsHero() {
   return (
-    <section className="w-full bg-gradient-to-br from-blue-700 via-indigo-700 to-violet-800 py-24 relative overflow-hidden">
-      <div className="absolute right-0 top-0 h-64 w-64 bg-yellow-400 rounded-full blur-3xl opacity-20"></div>
-      <div className="absolute left-0 bottom-0 h-64 w-64 bg-blue-400 rounded-full blur-3xl opacity-20"></div>
+    <section className="w-full bg-gradient-to-br from-blue-700 via-indigo-700 to-violet-800 py-12 sm:py-16 md:py-24 relative overflow-hidden">
+      <div className="absolute right-0 top-0 h-40 w-40 sm:h-64 sm:w-64 bg-yellow-400 rounded-full blur-3xl opacity-20"></div>
+      <div className="absolute left-0 bottom-0 h-40 w-40 sm:h-64 sm:w-64 bg-blue-400 rounded-full blur-3xl opacity-20"></div>
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
-            className="space-y-6"
+            className="space-y-4 sm:space-y-6"
           >
-            <div className="inline-flex items-center px-3 py-1 bg-blue-800/30 backdrop-blur-sm rounded-full border border-blue-400/20 text-blue-200 text-sm">
+            <div className="inline-flex items-center px-3 py-1 bg-blue-800/30 backdrop-blur-sm rounded-full border border-blue-400/20 text-blue-200 text-xs sm:text-sm">
               <span className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
               Unidirectional Security Gateway
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight tracking-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight tracking-tight">
               Protecting India&apos;s <br />
               <span className="text-yellow-300">Critical Infrastructure</span>
             </h1>
-            <p className="text-lg text-blue-100 max-w-lg">
+            <p className="text-base sm:text-lg text-blue-100 max-w-lg">
               Cutting-edge cybersecurity solutions designed for mission-critical
               environments in the modern threat landscape.
             </p>
-            <div className="flex flex-wrap gap-4 pt-2">
+            <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 pt-2">
               <Link href="/services/cybersecurity" passHref>
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-gradient-to-r from-yellow-400 to-amber-500 text-blue-900 px-6 py-3 rounded-full font-bold text-base shadow-lg hover:shadow-yellow-400/30 transition duration-300 flex items-center"
+                  className="w-full sm:w-auto bg-gradient-to-r from-yellow-400 to-amber-500 text-blue-900 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full font-bold text-sm sm:text-base shadow-lg hover:shadow-yellow-400/30 transition duration-300 flex items-center justify-center"
                 >
                   Explore Solutions
                   <ArrowRight className="ml-2 h-4 w-4" />
@@ -83,7 +81,7 @@ function SolutionsHero() {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-blue-700/30 text-white border border-blue-400/30 backdrop-blur-sm px-6 py-3 rounded-full font-bold text-base hover:bg-blue-600/40 transition duration-300"
+                  className="w-full sm:w-auto bg-blue-700/30 text-white border border-blue-400/30 backdrop-blur-sm px-5 sm:px-6 py-2.5 sm:py-3 rounded-full font-bold text-sm sm:text-base hover:bg-blue-600/40 transition duration-300"
                 >
                   Advisory & Consulting
                 </motion.button>
@@ -94,7 +92,7 @@ function SolutionsHero() {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
-            className="relative h-[400px] w-full"
+            className="relative h-[250px] sm:h-[320px] md:h-[400px] w-full"
           >
             <div className="absolute inset-0 bg-blue-600/20 backdrop-blur-md rounded-2xl"></div>
             <div className="absolute inset-0 bg-gradient-to-br from-blue-900/80 to-indigo-900/80 backdrop-blur-md rounded-2xl"></div>
@@ -103,7 +101,7 @@ function SolutionsHero() {
                 src="/images/about/info.svg"
                 alt="Cybersecurity Infographic"
                 fill
-                className="object-contain p-6"
+                className="object-contain p-4 sm:p-6"
                 priority
               />
               <div className="absolute top-4 right-4 p-2 bg-blue-500/30 rounded-full animate-pulse"></div>
@@ -118,7 +116,7 @@ function SolutionsHero() {
 
 function CybersecurityPhilosophy() {
   return (
-    <section className="w-full py-24 bg-white relative overflow-hidden">
+    <section className="w-full py-14 sm:py-18 md:py-24 bg-white relative overflow-hidden">
       <div className="absolute inset-0 bg-[url('/images/dot-pattern.svg')] opacity-5"></div>
       <div className="container mx-auto px-4 md:px-6 max-w-5xl">
         <motion.div
@@ -126,31 +124,31 @@ function CybersecurityPhilosophy() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center space-y-6"
+          className="text-center space-y-4 sm:space-y-6"
         >
-          <div className="inline-flex items-center px-3 py-1 bg-blue-50 rounded-full text-blue-600 font-medium text-sm">
+          <div className="inline-flex items-center px-3 py-1 bg-blue-50 rounded-full text-blue-600 font-medium text-xs sm:text-sm">
             OUR CYBERSECURITY PHILOSOPHY
           </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-            Ensure data flows only one way. <br /> Protect every device.
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+            Ensure data flows only one way. <br className="hidden sm:block" /> Protect every device.
           </h2>
 
           <div className="max-w-3xl mx-auto">
-            <p className="text-lg text-gray-600">
+            <p className="text-base sm:text-lg text-gray-600">
               Terafence&apos;s solutions ensure security and our technology
               protects critical infrastructure by securing data transfer and
               device access at all levels.
             </p>
           </div>
 
-          <div className="pt-6">
+          <div className="pt-4 sm:pt-6">
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.97 }}
               className="inline-block"
             >
               <Link href="/usecases" passHref>
-                <button className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-3 rounded-full font-bold text-base shadow-lg hover:from-blue-700 hover:to-indigo-700 transition duration-300 flex items-center">
+                <button className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-full font-bold text-sm sm:text-base shadow-lg hover:from-blue-700 hover:to-indigo-700 transition duration-300 flex items-center">
                   Learn More
                   <ChevronRight className="ml-2 h-4 w-4" />
                 </button>
@@ -163,11 +161,11 @@ function CybersecurityPhilosophy() {
   );
 }
 
-/* ─── NEW: Services Overview Section ─── */
+/* ─── Services Overview Section ─── */
 function ServicesOverview() {
   const services = [
     {
-      icon: <Lightbulb className="h-7 w-7" />,
+      icon: <Lightbulb className="h-6 w-6 sm:h-7 sm:w-7" />,
       title: "Advisory & Consulting",
       description:
         "Strategic IT advisory covering data migration, workplace experience consulting, technology transformation, and cost optimization — aligned to your mission-critical goals.",
@@ -178,7 +176,7 @@ function ServicesOverview() {
       stats: "200+ enterprises advised",
     },
     {
-      icon: <Cloud className="h-7 w-7" />,
+      icon: <Cloud className="h-6 w-6 sm:h-7 sm:w-7" />,
       title: "Cloud Services",
       description:
         "Multi-cloud migration, infrastructure management, and FinOps optimization across AWS, Azure, and GCP — with security built into every layer.",
@@ -189,7 +187,7 @@ function ServicesOverview() {
       stats: "99.99% uptime SLA",
     },
     {
-      icon: <Monitor className="h-7 w-7" />,
+      icon: <Monitor className="h-6 w-6 sm:h-7 sm:w-7" />,
       title: "Workplace Services",
       description:
         "Digital workspace transformation — endpoint management, unified communications, AI-powered service desk, and zero-trust endpoint security.",
@@ -200,7 +198,7 @@ function ServicesOverview() {
       stats: "40% productivity increase",
     },
     {
-      icon: <Network className="h-7 w-7" />,
+      icon: <Network className="h-6 w-6 sm:h-7 sm:w-7" />,
       title: "Network Services",
       description:
         "Enterprise and tactical network design — campus LAN, SD-WAN, data center fabrics, and military-grade encrypted communications for field operations.",
@@ -211,7 +209,7 @@ function ServicesOverview() {
       stats: "500+ sites deployed",
     },
     {
-      icon: <Shield className="h-7 w-7" />,
+      icon: <Shield className="h-6 w-6 sm:h-7 sm:w-7" />,
       title: "Cybersecurity",
       description:
         "24/7 SOC operations, hardware data diode solutions, OT/ICS security, penetration testing, and threat intelligence — protecting what matters most.",
@@ -222,7 +220,7 @@ function ServicesOverview() {
       stats: "24/7 SOC operations",
     },
     {
-      icon: <Link2 className="h-7 w-7" />,
+      icon: <Link2 className="h-6 w-6 sm:h-7 sm:w-7" />,
       title: "Service Integration",
       description:
         "SIAM framework implementation, multi-vendor orchestration, unified ITSM, and automation-first service delivery across all IT towers.",
@@ -248,22 +246,22 @@ function ServicesOverview() {
   };
 
   return (
-    <section className="w-full py-24 bg-gradient-to-b from-slate-50 to-white relative overflow-hidden">
+    <section className="w-full py-14 sm:py-18 md:py-24 bg-gradient-to-b from-slate-50 to-white relative overflow-hidden">
       <div className="container mx-auto px-4 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-16"
         >
-          <div className="inline-flex items-center px-3 py-1 bg-indigo-50 rounded-full text-indigo-600 font-medium text-sm mb-3">
+          <div className="inline-flex items-center px-3 py-1 bg-indigo-50 rounded-full text-indigo-600 font-medium text-xs sm:text-sm mb-3">
             OUR SERVICES
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
             End-to-End IT & Security Services
           </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
             Beyond our core data diode technology, Terafence delivers a
             comprehensive suite of IT services — from strategic advisory and
             cloud transformation to 24/7 cybersecurity operations.
@@ -275,7 +273,7 @@ function ServicesOverview() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
         >
           {services.map((service, index) => (
             <motion.div key={index} variants={item}>
@@ -285,25 +283,25 @@ function ServicesOverview() {
                     scale: 1.02,
                     boxShadow: "0 12px 24px -4px rgba(0, 0, 0, 0.1)",
                   }}
-                  className="bg-white rounded-xl p-6 border border-gray-100 transition-all hover:border-gray-200 group shadow-sm h-full flex flex-col"
+                  className="bg-white rounded-xl p-5 sm:p-6 border border-gray-100 transition-all hover:border-gray-200 group shadow-sm h-full flex flex-col"
                 >
-                  <div className="flex items-start justify-between mb-4">
+                  <div className="flex items-start justify-between mb-3 sm:mb-4">
                     <div
-                      className={`${service.bgLight} p-3 rounded-xl group-hover:scale-110 transition-transform duration-300`}
+                      className={`${service.bgLight} p-2.5 sm:p-3 rounded-xl group-hover:scale-110 transition-transform duration-300`}
                     >
                       <div className={service.textColor}>{service.icon}</div>
                     </div>
                     <ArrowRight className="h-4 w-4 text-gray-300 group-hover:text-gray-600 group-hover:translate-x-1 transition-all duration-300" />
                   </div>
 
-                  <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-blue-700 transition-colors">
+                  <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-1.5 sm:mb-2 group-hover:text-blue-700 transition-colors">
                     {service.title}
                   </h3>
                   <p className="text-gray-600 text-sm leading-relaxed flex-grow">
                     {service.description}
                   </p>
 
-                  <div className="mt-4 pt-4 border-t border-gray-100">
+                  <div className="mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-gray-100">
                     <span
                       className={`text-xs font-semibold ${service.textColor} uppercase tracking-wider`}
                     >
@@ -321,383 +319,76 @@ function ServicesOverview() {
 }
 
 function GlobalPresence() {
-
-  const [activeLocation, setActiveLocation] = useState<string | null>(null);
-
-   const mapLocations = [
-    { id: "dallas", name: "Dallas", sub: "United States", x: 26, y: 43 },
-    { id: "newjersey", name: "New Jersey", sub: "United States", x: 30, y: 39 },
-    { id: "uk", name: "United Kingdom", sub: null, x: 47, y: 31 },
-    { id: "italy", name: "Italy", sub: null, x: 50, y: 37 },
-    { id: "dubai", name: "Dubai", sub: "UAE", x: 59.8, y: 48 },
-    { id: "india", name: "India", sub: null, x: 65, y: 42.5 },
-    { id: "singapore", name: "Singapore", sub: null, x: 70, y: 61 },
-    { id: "thailand", name: "Thailand", sub: null, x: 71, y: 52 },
-    { id: "indonesia", name: "Indonesia", sub: null, x: 74, y: 62 },
-    { id: "japan", name: "Japan", sub: null, x: 78, y: 41 },
-  ];
-
   return (
-    <section className="w-full py-24 bg-gradient-to-b from-slate-50 to-slate-100 relative overflow-hidden">
-
+    <section className="w-full py-14 sm:py-18 md:py-24 bg-gradient-to-b from-slate-50 to-slate-100 relative overflow-hidden">
       <div className="absolute inset-0 bg-[url('/images/topo.svg')] opacity-5" />
 
-      <style>{`
-
-        @keyframes gp-ripple-a {
-          0% { transform: translate(-50%,-50%) scale(1); opacity: 0.7; }
-          100% { transform: translate(-50%,-50%) scale(3.2); opacity: 0; }
-        }
-
-        @keyframes gp-ripple-b {
-          0% { transform: translate(-50%,-50%) scale(1); opacity: 0.5; }
-          100% { transform: translate(-50%,-50%) scale(2.4); opacity: 0; }
-        }
-
-        @keyframes gp-ripple-c {
-          0% { transform: translate(-50%,-50%) scale(1); opacity: 0.35; }
-          100% { transform: translate(-50%,-50%) scale(1.8); opacity: 0; }
-        }
-
-        @keyframes gp-orbit {
-          0% { transform: translate(-50%,-50%) rotate(0deg) translateX(9px) rotate(0deg); }
-          100% { transform: translate(-50%,-50%) rotate(360deg) translateX(9px) rotate(-360deg); }
-        }
-
-        .gp-marker-wrap {
-          position: absolute;
-          z-index: 10;
-          cursor: pointer;
-        }
-
-        .gp-ripple {
-          position: absolute;
-          border-radius: 50%;
-          width: clamp(8px,0.8vw,12px);
-          height: clamp(8px,0.8vw,12px);
-          top: 50%;
-          left: 50%;
-        }
-
-        .gp-ripple-a {
-          background: rgba(251,191,36,0.55);
-          animation: gp-ripple-a 2.2s ease-out infinite;
-        }
-
-        .gp-ripple-b {
-          background: rgba(251,191,36,0.4);
-          animation: gp-ripple-b 2.2s ease-out infinite;
-          animation-delay: 0.55s;
-        }
-
-        .gp-ripple-c {
-          background: rgba(255,255,255,0.25);
-          animation: gp-ripple-c 2.2s ease-out infinite;
-          animation-delay: 1.1s;
-        }
-
-        .gp-orbit-dot {
-          position: absolute;
-          width: 3px;
-          height: 3px;
-          background: #fde68a;
-          border-radius: 50%;
-          top: 50%;
-          left: 50%;
-          animation: gp-orbit 3s linear infinite;
-          box-shadow: 0 0 4px 1px rgba(253,230,138,0.9);
-        }
-
-        .gp-orbit-dot-2 {
-          animation-delay: -1.5s;
-          background: rgba(253,230,138,0.6);
-        }
-
-        .gp-core {
-          width: clamp(8px,0.8vw,12px);
-          height: clamp(8px,0.8vw,12px);
-          border-radius: 50%;
-          background: #ffffff;
-          border: 2px solid #fbbf24;
-          box-shadow: 0 0 0 1px rgba(251,191,36,0.3), 0 0 8px 2px rgba(251,191,36,0.5);
-          position: relative;
-          z-index: 2;
-        }
-
-      `}</style>
-
       <div className="container mx-auto px-4 md:px-6">
-
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-14"
+          className="text-center mb-8 sm:mb-14"
         >
-
           <div className="inline-flex items-center gap-2 mb-3">
-            <span className="h-px w-6 bg-amber-500/60" />
-            <span className="text-[11px] font-semibold tracking-[0.18em] uppercase text-amber-600">
+            <span className="h-px w-4 sm:w-6 bg-amber-500/60" />
+            <span className="text-[10px] sm:text-[11px] font-semibold tracking-[0.18em] uppercase text-amber-600">
               Global Footprint
             </span>
-            <span className="h-px w-6 bg-amber-500/60" />
+            <span className="h-px w-4 sm:w-6 bg-amber-500/60" />
           </div>
 
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3 tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2 sm:mb-3 tracking-tight">
             Our Global Presence
           </h2>
 
-          <p className="text-base text-gray-500 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-sm sm:text-base text-gray-500 max-w-2xl mx-auto leading-relaxed">
             Terafence secures critical infrastructure across continents — active across
             multiple strategic locations worldwide.
           </p>
-
         </motion.div>
 
-        {/* Map */}
+        {/* Map — static image with all locations pre-rendered */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
+          className="w-full max-w-[1200px] mx-auto"
         >
-
-          <div className="relative w-full max-w-[1200px] mx-auto aspect-[2/1] overflow-hidden">
-
+          <div className="relative w-full aspect-[16/10] sm:aspect-[16/9] md:aspect-[2/1]">
             <Image
               src="/images/about/map.svg"
-              alt="Terafence Global Presence"
+              alt="Terafence Global Presence — Dallas, New Jersey, United Kingdom, Italy, Dubai, India, Singapore, Thailand, Indonesia, Japan"
               fill
               className="object-contain"
+              priority
             />
-
-            {mapLocations.map((location, i) => (
-              <div key={location.id}>
-
-                {/* Marker */}
-                <motion.div
-                  initial={{ scale: 0, opacity: 0 }}
-                  whileInView={{ scale: 1, opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 220,
-                    delay: 0.35 + i * 0.08,
-                  }}
-                  className="gp-marker-wrap"
-                  style={{
-                    left: `${location.x}%`,
-                    top: `${location.y}%`,
-                    transform: "translate(-50%, -50%)",
-                  }}
-                  onMouseEnter={() => setActiveLocation(location.id)}
-                  onMouseLeave={() => setActiveLocation(null)}
-                >
-                  <div className="gp-ripple gp-ripple-a" />
-                  <div className="gp-ripple gp-ripple-b" />
-                  <div className="gp-ripple gp-ripple-c" />
-
-                  <div className="gp-orbit-dot" />
-                  <div className="gp-orbit-dot gp-orbit-dot-2" />
-
-                  <div className="gp-core" />
-                </motion.div>
-
-                {/* Hover Tooltip */}
-                <AnimatePresence>
-                  {activeLocation === location.id && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 6, scale: 0.94 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: 6, scale: 0.94 }}
-                      transition={{ duration: 0.15 }}
-                      className="absolute z-20 pointer-events-none"
-                      style={{
-                        left: `${location.x}%`,
-                        top: `calc(${location.y}% - 26px)`,
-                        transform: "translate(-50%, -100%)",
-                      }}
-                    >
-
-                      <div className="relative bg-gray-900/95 backdrop-blur-sm border border-amber-500/30 rounded-xl px-3.5 py-2 shadow-xl shadow-black/20">
-
-                        <div className="absolute top-0 left-4 right-4 h-px bg-gradient-to-r from-transparent via-amber-400/60 to-transparent rounded-full" />
-
-                        <p className="text-amber-300 font-semibold text-[13px] whitespace-nowrap tracking-wide">
-                          {location.name}
-                        </p>
-
-                        {location.sub && (
-                          <p className="text-gray-400 text-[11px] whitespace-nowrap mt-0.5">
-                            {location.sub}
-                          </p>
-                        )}
-
-                      </div>
-
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-
-              </div>
-            ))}
-
           </div>
-
         </motion.div>
-
       </div>
     </section>
   );
 }
-// function SolutionsGrid() {
-//   const solutions = [
-//     {
-//       icon: <Shield className="h-8 w-8 text-blue-600" />,
-//       title: "SecureOT",
-//       description:
-//         "Physically isolates OT systems like SCADA, HMI, and PLCs, ensuring they remain inaccessible to unauthorized entities while maintaining necessary data flow.",
-//     },
-//     {
-//       icon: <Camera className="h-8 w-8 text-blue-600" />,
-//       title: "SecureCAM",
-//       description:
-//         "Protects IP-CCTV networks and video storage by preventing unauthorized access, ensuring the integrity and confidentiality of surveillance data.",
-//     },
-//     {
-//       icon: <Send className="h-8 w-8 text-blue-600" />,
-//       title: "SecureIT",
-//       description:
-//         "Implements unidirectional data flow in IT networks, allowing data transmission without the risk of reverse communication or external commands.",
-//     },
-//     {
-//       icon: <Heart className="h-8 w-8 text-blue-600" />,
-//       title: "SecureCOM",
-//       description:
-//         "Secures wearable medical devices like pacemakers and insulin injectors from unauthorized access, ensuring patient safety and device reliability.",
-//     },
-//     {
-//       icon: <Server className="h-8 w-8 text-blue-600" />,
-//       title: "Data Diode Technology",
-//       description:
-//         "Ensures one-way data transfer, providing a physical barrier that prevents data breaches while allowing continuous data monitoring.",
-//     },
-//     {
-//       icon: <Activity className="h-8 w-8 text-blue-600" />,
-//       title: "Industrial IoT Protection",
-//       description:
-//         "Safeguards industrial control systems and critical infrastructure from cyber threats without disrupting operational processes.",
-//     },
-//     {
-//       icon: <Globe className="h-8 w-8 text-blue-600" />,
-//       title: "Smart Building Security",
-//       description:
-//         "Protects smart building components, such as elevators and air-conditioning systems, from cyber threats, ensuring occupant safety and system reliability.",
-//     },
-//     {
-//       icon: <Lock className="h-8 w-8 text-blue-600" />,
-//       title: "Unidirectional Secure Gateway",
-//       description:
-//         "Provides a hardware-based solution that isolates IP devices, preventing penetration while maintaining data outflow and device control.",
-//     },
-//   ];
-
-//   const container = {
-//     hidden: { opacity: 0 },
-//     show: {
-//       opacity: 1,
-//       transition: {
-//         staggerChildren: 0.1,
-//       },
-//     },
-//   };
-
-//   const item = {
-//     hidden: { opacity: 0, y: 20 },
-//     show: { opacity: 1, y: 0 },
-//   };
-
-//   return (
-//     <section className="w-full py-24 bg-white relative overflow-hidden">
-//       <div className="absolute inset-0 bg-[url('/images/circuit-pattern.svg')] opacity-5"></div>
-//       <div className="container mx-auto px-4 md:px-6">
-//         <motion.div
-//           initial={{ opacity: 0, y: 20 }}
-//           whileInView={{ opacity: 1, y: 0 }}
-//           viewport={{ once: true }}
-//           transition={{ duration: 0.6 }}
-//           className="text-center mb-12"
-//         >
-//           <div className="inline-flex items-center px-3 py-1 bg-blue-50 rounded-full text-blue-600 font-medium text-sm mb-3">
-//             COMPREHENSIVE PROTECTION
-//           </div>
-//           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-//             Unidirectional Secure Gateway
-//           </h2>
-//           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-//             Comprehensive solutions designed to protect critical infrastructure
-//             across all environments.
-//           </p>
-//         </motion.div>
-
-//         <motion.div
-//           variants={container}
-//           initial="hidden"
-//           whileInView="show"
-//           viewport={{ once: true }}
-//           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
-//         >
-//           {solutions.map((solution, index) => (
-//             <motion.div
-//               key={index}
-//               variants={item}
-//               whileHover={{
-//                 scale: 1.03,
-//                 boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1)",
-//               }}
-//               className="bg-white rounded-xl p-6 border border-gray-100 transition-all hover:border-blue-300 group shadow hover:shadow-blue-100"
-//             >
-//               <div className="flex flex-col items-center text-center space-y-4">
-//                 <div className="bg-blue-100 p-4 rounded-lg mb-2">
-//                   {solution.icon}
-//                 </div>
-//                 <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
-//                   {solution.title}
-//                 </h3>
-//                 <p className="text-gray-600 text-sm">{solution.description}</p>
-//                 <div className="opacity-0 group-hover:opacity-100 transition-opacity">
-//                   <div className="inline-flex items-center text-blue-600 font-semibold text-sm">
-//                     Learn more
-//                     <ArrowRight className="ml-1 h-3 w-3" />
-//                   </div>
-//                 </div>
-//               </div>
-//             </motion.div>
-//           ))}
-//         </motion.div>
-//       </div>
-//     </section>
-//   );
-// }
 
 function TerafencePlatform() {
   const techStack = [
-    { icon: <Shield className="h-5 w-5" />, name: "Data Diode" },
-    { icon: <FileDigit className="h-5 w-5" />, name: "TFG-BSG" },
-    { icon: <Box className="h-5 w-5" />, name: "TFG-1URP" },
-    { icon: <AlertTriangle className="h-5 w-5" />, name: "TFG-121" },
-    { icon: <Search className="h-5 w-5" />, name: "Syslog Transfer" },
-    { icon: <Globe className="h-5 w-5" />, name: "Threat Prevention" },
-    { icon: <FileJson className="h-5 w-5" />, name: "Cybersecurity" },
-    { icon: <Flag className="h-5 w-5" />, name: "Origin Security" },
+    { icon: <Shield className="h-4 w-4 sm:h-5 sm:w-5" />, name: "Data Diode" },
+    { icon: <FileDigit className="h-4 w-4 sm:h-5 sm:w-5" />, name: "TFG-BSG" },
+    { icon: <Box className="h-4 w-4 sm:h-5 sm:w-5" />, name: "TFG-1URP" },
+    { icon: <AlertTriangle className="h-4 w-4 sm:h-5 sm:w-5" />, name: "TFG-121" },
+    { icon: <Search className="h-4 w-4 sm:h-5 sm:w-5" />, name: "Syslog Transfer" },
+    { icon: <Globe className="h-4 w-4 sm:h-5 sm:w-5" />, name: "Threat Prevention" },
+    { icon: <FileJson className="h-4 w-4 sm:h-5 sm:w-5" />, name: "Cybersecurity" },
+    { icon: <Flag className="h-4 w-4 sm:h-5 sm:w-5" />, name: "Origin Security" },
   ];
 
   const deploymentOptions = [
-    { icon: <Shield className="h-5 w-5" />, name: "Air-Gapped" },
-    { icon: <Server className="h-5 w-5" />, name: "On-Premise" },
-    { icon: <Cloud className="h-5 w-5" />, name: "Data Diode" },
+    { icon: <Shield className="h-4 w-4 sm:h-5 sm:w-5" />, name: "Air-Gapped" },
+    { icon: <Server className="h-4 w-4 sm:h-5 sm:w-5" />, name: "On-Premise" },
+    { icon: <Cloud className="h-4 w-4 sm:h-5 sm:w-5" />, name: "Data Diode" },
   ];
 
   const serviceHighlights = [
@@ -719,39 +410,39 @@ function TerafencePlatform() {
   ];
 
   return (
-    <section className="w-full py-24 bg-gradient-to-br from-blue-700 via-indigo-700 to-violet-800 text-white relative overflow-hidden">
+    <section className="w-full py-14 sm:py-18 md:py-24 bg-gradient-to-br from-blue-700 via-indigo-700 to-violet-800 text-white relative overflow-hidden">
       <div className="absolute inset-0 bg-[url('/images/wave-pattern.svg')] opacity-10"></div>
-      <div className="absolute top-0 right-0 w-64 h-64 bg-blue-400 rounded-full blur-3xl opacity-20"></div>
-      <div className="absolute bottom-0 left-0 w-64 h-64 bg-violet-400 rounded-full blur-3xl opacity-20"></div>
+      <div className="absolute top-0 right-0 w-40 h-40 sm:w-64 sm:h-64 bg-blue-400 rounded-full blur-3xl opacity-20"></div>
+      <div className="absolute bottom-0 left-0 w-40 h-40 sm:w-64 sm:h-64 bg-violet-400 rounded-full blur-3xl opacity-20"></div>
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="space-y-8"
+            className="space-y-6 sm:space-y-8"
           >
             <div>
-              <div className="inline-flex items-center px-3 py-1 bg-blue-800/40 backdrop-blur-sm rounded-full border border-blue-400/20 text-blue-200 mb-3 text-sm">
+              <div className="inline-flex items-center px-3 py-1 bg-blue-800/40 backdrop-blur-sm rounded-full border border-blue-400/20 text-blue-200 mb-3 text-xs sm:text-sm">
                 <span className="w-2 h-2 bg-blue-300 rounded-full mr-2 animate-pulse"></span>
                 COMPREHENSIVE PROTECTION
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Terafence</h2>
-              <p className="text-lg text-blue-100">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">Terafence</h2>
+              <p className="text-base sm:text-lg text-blue-100">
                 Our product combines the unidirectional gateway security to
                 provide comprehensive protection against threats, even in the
                 most sensitive environments.
               </p>
             </div>
 
-            <div className="bg-blue-800/20 backdrop-blur-sm p-6 rounded-xl border border-blue-700/40">
-              <h4 className="text-xl font-semibold mb-4 flex items-center">
-                <div className="w-1 h-6 bg-yellow-400 rounded-full mr-3"></div>
+            <div className="bg-blue-800/20 backdrop-blur-sm p-4 sm:p-6 rounded-xl border border-blue-700/40">
+              <h4 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 flex items-center">
+                <div className="w-1 h-5 sm:h-6 bg-yellow-400 rounded-full mr-3"></div>
                 Technology Overview
               </h4>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 gap-3 sm:gap-4">
                 {techStack.map((tech, index) => (
                   <motion.div
                     key={index}
@@ -759,12 +450,12 @@ function TerafencePlatform() {
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.05 }}
-                    className="flex items-center space-x-3 group"
+                    className="flex items-center space-x-2 sm:space-x-3 group"
                   >
-                    <div className="bg-blue-600/50 p-2 rounded-lg">
+                    <div className="bg-blue-600/50 p-1.5 sm:p-2 rounded-lg flex-shrink-0">
                       {tech.icon}
                     </div>
-                    <span className="text-base group-hover:text-blue-200 transition-colors">
+                    <span className="text-sm sm:text-base group-hover:text-blue-200 transition-colors truncate">
                       {tech.name}
                     </span>
                   </motion.div>
@@ -773,38 +464,38 @@ function TerafencePlatform() {
             </div>
 
             <div>
-              <h4 className="text-xl font-semibold mb-4 flex items-center">
-                <div className="w-1 h-6 bg-yellow-400 rounded-full mr-3"></div>
+              <h4 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 flex items-center">
+                <div className="w-1 h-5 sm:h-6 bg-yellow-400 rounded-full mr-3"></div>
                 Deployment Options
               </h4>
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-2 sm:gap-3">
                 {deploymentOptions.map((option, index) => (
                   <motion.div
                     key={index}
                     whileHover={{ scale: 1.03 }}
-                    className="bg-blue-800/50 px-4 py-3 rounded-lg flex items-center space-x-3 border border-blue-600/40"
+                    className="bg-blue-800/50 px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg flex items-center space-x-2 sm:space-x-3 border border-blue-600/40"
                   >
-                    <div className="bg-blue-600/50 p-2 rounded-lg">
+                    <div className="bg-blue-600/50 p-1.5 sm:p-2 rounded-lg">
                       {option.icon}
                     </div>
-                    <span className="text-base font-medium">{option.name}</span>
+                    <span className="text-sm sm:text-base font-medium">{option.name}</span>
                   </motion.div>
                 ))}
               </div>
             </div>
 
-            {/* Services quick-links woven into the platform section */}
+            {/* Services quick-links */}
             <div>
-              <h4 className="text-xl font-semibold mb-4 flex items-center">
-                <div className="w-1 h-6 bg-yellow-400 rounded-full mr-3"></div>
+              <h4 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 flex items-center">
+                <div className="w-1 h-5 sm:h-6 bg-yellow-400 rounded-full mr-3"></div>
                 Our Services
               </h4>
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-col sm:flex-row flex-wrap gap-2 sm:gap-3">
                 {serviceHighlights.map((svc, index) => (
                   <Link key={index} href={svc.href}>
                     <motion.div
                       whileHover={{ scale: 1.03 }}
-                      className="bg-yellow-400/10 px-4 py-3  mb-5 rounded-lg border border-yellow-400/20 hover:border-yellow-400/40 transition-colors cursor-pointer"
+                      className="bg-yellow-400/10 px-4 py-3 mb-1 sm:mb-5 rounded-lg border border-yellow-400/20 hover:border-yellow-400/40 transition-colors cursor-pointer"
                     >
                       <span className="text-sm font-semibold text-yellow-300">
                         {svc.label}
@@ -820,7 +511,7 @@ function TerafencePlatform() {
               <motion.button
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
-                className="bg-gradient-to-r from-yellow-400 to-amber-500 text-blue-900 px-6 py-3 rounded-full font-bold text-base shadow-lg hover:shadow-yellow-400/30 transition duration-300 flex items-center"
+                className="w-full sm:w-auto bg-gradient-to-r from-yellow-400 to-amber-500 text-blue-900 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full font-bold text-sm sm:text-base shadow-lg hover:shadow-yellow-400/30 transition duration-300 flex items-center justify-center sm:inline-flex"
               >
                 Request a Demo
                 <ChevronRight className="ml-2 h-4 w-4" />
@@ -833,7 +524,7 @@ function TerafencePlatform() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative h-[400px] w-full"
+            className="relative h-[280px] sm:h-[350px] md:h-[400px] w-full mt-4 lg:mt-0"
           >
             <div className="absolute inset-0 bg-blue-900/80 backdrop-blur-md rounded-xl border border-blue-500/30"></div>
             <div className="absolute inset-0 flex items-center justify-center">
@@ -841,7 +532,7 @@ function TerafencePlatform() {
                 src="/images/about/info1.svg"
                 alt="terafence-india"
                 fill
-                className="object-contain p-8"
+                className="object-contain p-6 sm:p-8"
               />
               <div className="absolute top-4 right-4 w-3 h-3 bg-yellow-400 rounded-full animate-pulse"></div>
               <div className="absolute bottom-4 left-4 w-3 h-3 bg-blue-400 rounded-full animate-pulse delay-300"></div>

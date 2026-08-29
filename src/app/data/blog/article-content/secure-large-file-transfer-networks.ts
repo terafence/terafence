@@ -1,6 +1,6 @@
 export const articleContent = {
   title: "Bridging the Divide, Securely: Transferring Large Files Between Secure and Unsecure Networks",
-  author: "Terafence Private Limited",
+  author: "Terafence Limited",
   publishDate: "2025-04-30",
   
   // Structured content sections

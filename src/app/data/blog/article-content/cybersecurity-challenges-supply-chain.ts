@@ -1,6 +1,6 @@
 export const articleContent = {
   title: "Cybersecurity Challenges in Supply Chain Management",
-  author: "Terafence Private Limited",
+  author: "Terafence Limited",
   publishDate: "2025-06-19",
   
   // Image captions for each article image

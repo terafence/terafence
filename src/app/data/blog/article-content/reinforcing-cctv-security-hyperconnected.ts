@@ -1,7 +1,7 @@
 // File: src/app/data/blog/article-content/reinforcing-cctv-security-hyperconnected.ts
 export const articleContent = {
   title: "Reinforcing CCTV Security in the Era of Hyperconnected Infrastructure",
-  author: "Terafence Private Limited",
+  author: "Terafence Limited",
   publishDate: "2025-05-07",
   
   // Image captions for each article image

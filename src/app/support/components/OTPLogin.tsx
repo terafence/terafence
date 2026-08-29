@@ -680,7 +680,7 @@ export default function OTPLogin() {
             variants={itemVariants}
             className="mt-4 sm:mt-6 text-center text-gray-500 text-xs sm:text-sm px-4"
           >
-            © {new Date().getFullYear()} Terafence Private Limited. All rights reserved.
+            © {new Date().getFullYear()} Terafence Limited. All rights reserved.
           </motion.div>
         </motion.div>
       </motion.div>

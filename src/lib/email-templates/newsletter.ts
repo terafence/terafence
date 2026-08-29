@@ -129,7 +129,7 @@ interface CustomerEmailProps {
             
             <p>If you have any questions or feedback, don't hesitate to reply to this email.</p>
             
-            <p>Best regards,<br>Terafence Private Limited</p>
+            <p>Best regards,<br>Terafence Limited</p>
           </div>
           
           <div class="footer">
@@ -142,7 +142,7 @@ interface CustomerEmailProps {
               </a>
             </div>
             
-            <p>&copy; ${new Date().getFullYear()} Terafence Private Limited. All rights reserved.</p>
+            <p>&copy; ${new Date().getFullYear()} Terafence Limited. All rights reserved.</p>
             <p>209, Suncity Success Tower, Sector-65, Gurgaon, Haryana-122005, India</p>
             
             <p>
@@ -302,7 +302,7 @@ interface CustomerEmailProps {
           
           <div class="footer">
             <p>This is an automated notification from the Terafence Newsletter System.</p>
-            <p>&copy; ${new Date().getFullYear()} Terafence Private Limited. All rights reserved.</p>
+            <p>&copy; ${new Date().getFullYear()} Terafence Limited. All rights reserved.</p>
           </div>
         </div>
       </body>

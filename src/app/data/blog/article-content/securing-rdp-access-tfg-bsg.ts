@@ -1,6 +1,6 @@
 export const articleContent = {
   title: "Securing Remote Desktop Protocol (RDP) Access Using TFG – Bidirectional Security Gateway (BSG)",
-  author: "Terafence Private Limited",
+  author: "Terafence Limited",
   publishDate: "2025-07-10",
   
   // Image captions for each article image

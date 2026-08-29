@@ -64,7 +64,7 @@ export default function TermsOfUsePage() {
           {/* Introduction */}
           <div className="mb-10">
             <p className="text-lg leading-relaxed text-slate-700 mb-6">
-              Welcome to Terafence Private Limited. These Terms of Use govern your access to and use of our website, 
+              Welcome to Terafence Limited. These Terms of Use govern your access to and use of our website, 
               products, and services. Please read these Terms carefully before using our website or services.
             </p>
             
@@ -91,7 +91,7 @@ export default function TermsOfUsePage() {
                 </summary>
                 <div className="p-5 bg-slate-50 border-t border-slate-200">
                   <div className="text-slate-700 space-y-4">
-                    <p>By accessing or using the Terafence Private Limited website, you agree to be bound by these Terms of Use, all applicable laws and regulations, and agree that you are responsible for compliance with any applicable local laws. If you do not agree with any of these terms, you are prohibited from using or accessing this site.</p>
+                    <p>By accessing or using the Terafence Limited website, you agree to be bound by these Terms of Use, all applicable laws and regulations, and agree that you are responsible for compliance with any applicable local laws. If you do not agree with any of these terms, you are prohibited from using or accessing this site.</p>
                     
                     <p>We may revise these Terms of Use at any time without notice. By using this website, you agree to be bound by the current version of these Terms of Use.</p>
                     
@@ -112,17 +112,17 @@ export default function TermsOfUsePage() {
                 </summary>
                 <div className="p-5 bg-slate-50 border-t border-slate-200">
                   <div className="text-slate-700 space-y-4">
-                    <p>Permission is granted to temporarily download one copy of the materials (information or software) on Terafence Private Limited's website for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not:</p>
+                    <p>Permission is granted to temporarily download one copy of the materials (information or software) on Terafence Limited's website for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not:</p>
                     
                     <ul className="list-disc pl-6 space-y-2">
                       <li>Modify or copy the materials;</li>
                       <li>Use the materials for any commercial purpose, or for any public display (commercial or non-commercial);</li>
-                      <li>Attempt to decompile or reverse engineer any software contained on Terafence Private Limited's website;</li>
+                      <li>Attempt to decompile or reverse engineer any software contained on Terafence Limited's website;</li>
                       <li>Remove any copyright or other proprietary notations from the materials; or</li>
                       <li>Transfer the materials to another person or "mirror" the materials on any other server.</li>
                     </ul>
                     
-                    <p>This license shall automatically terminate if you violate any of these restrictions and may be terminated by Terafence Private Limited at any time. Upon terminating your viewing of these materials or upon the termination of this license, you must destroy any downloaded materials in your possession whether in electronic or printed format.</p>
+                    <p>This license shall automatically terminate if you violate any of these restrictions and may be terminated by Terafence Limited at any time. Upon terminating your viewing of these materials or upon the termination of this license, you must destroy any downloaded materials in your possession whether in electronic or printed format.</p>
                   </div>
                 </div>
               </details>
@@ -139,9 +139,9 @@ export default function TermsOfUsePage() {
                 </summary>
                 <div className="p-5 bg-slate-50 border-t border-slate-200">
                   <div className="text-slate-700 space-y-4">
-                    <p>The materials on Terafence Private Limited's website are provided on an 'as is' basis. Terafence Private Limited makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.</p>
+                    <p>The materials on Terafence Limited's website are provided on an 'as is' basis. Terafence Limited makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.</p>
                     
-                    <p>Further, Terafence Private Limited does not warrant or make any representations concerning the accuracy, likely results, or reliability of the use of the materials on its website or otherwise relating to such materials or on any sites linked to this site.</p>
+                    <p>Further, Terafence Limited does not warrant or make any representations concerning the accuracy, likely results, or reliability of the use of the materials on its website or otherwise relating to such materials or on any sites linked to this site.</p>
                   </div>
                 </div>
               </details>
@@ -158,7 +158,7 @@ export default function TermsOfUsePage() {
                 </summary>
                 <div className="p-5 bg-slate-50 border-t border-slate-200">
                   <div className="text-slate-700 space-y-4">
-                    <p>In no event shall Terafence Private Limited or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on Terafence Private Limited's website, even if Terafence Private Limited or a Terafence Private Limited authorized representative has been notified orally or in writing of the possibility of such damage.</p>
+                    <p>In no event shall Terafence Limited or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on Terafence Limited's website, even if Terafence Limited or a Terafence Limited authorized representative has been notified orally or in writing of the possibility of such damage.</p>
                     
                     <p>Because some jurisdictions do not allow limitations on implied warranties, or limitations of liability for consequential or incidental damages, these limitations may not apply to you.</p>
                   </div>
@@ -177,7 +177,7 @@ export default function TermsOfUsePage() {
                 </summary>
                 <div className="p-5 bg-slate-50 border-t border-slate-200">
                   <div className="text-slate-700 space-y-4">
-                    <p>The materials appearing on Terafence Private Limited's website could include technical, typographical, or photographic errors. Terafence Private Limited does not warrant that any of the materials on its website are accurate, complete or current. Terafence Private Limited may make changes to the materials contained on its website at any time without notice. However, Terafence Private Limited does not make any commitment to update the materials.</p>
+                    <p>The materials appearing on Terafence Limited's website could include technical, typographical, or photographic errors. Terafence Limited does not warrant that any of the materials on its website are accurate, complete or current. Terafence Limited may make changes to the materials contained on its website at any time without notice. However, Terafence Limited does not make any commitment to update the materials.</p>
                   </div>
                 </div>
               </details>
@@ -194,7 +194,7 @@ export default function TermsOfUsePage() {
                 </summary>
                 <div className="p-5 bg-slate-50 border-t border-slate-200">
                   <div className="text-slate-700 space-y-4">
-                    <p>Terafence Private Limited has not reviewed all of the sites linked to its website and is not responsible for the contents of any such linked site. The inclusion of any link does not imply endorsement by Terafence Private Limited of the site. Use of any such linked website is at the user's own risk.</p>
+                    <p>Terafence Limited has not reviewed all of the sites linked to its website and is not responsible for the contents of any such linked site. The inclusion of any link does not imply endorsement by Terafence Limited of the site. Use of any such linked website is at the user's own risk.</p>
                   </div>
                 </div>
               </details>
@@ -211,7 +211,7 @@ export default function TermsOfUsePage() {
                 </summary>
                 <div className="p-5 bg-slate-50 border-t border-slate-200">
                   <div className="text-slate-700 space-y-4">
-                    <p>Terafence Private Limited may revise these terms of service for its website at any time without notice. By using this website you are agreeing to be bound by the then current version of these terms of service.</p>
+                    <p>Terafence Limited may revise these terms of service for its website at any time without notice. By using this website you are agreeing to be bound by the then current version of these terms of service.</p>
                   </div>
                 </div>
               </details>
@@ -249,9 +249,9 @@ export default function TermsOfUsePage() {
                 </summary>
                 <div className="p-5 bg-slate-50 border-t border-slate-200">
                   <div className="text-slate-700 space-y-4">
-                    <p>The website and its original content, features, and functionality are owned by Terafence Private Limited and are protected by international copyright, trademark, patent, trade secret, and other intellectual property or proprietary rights laws.</p>
+                    <p>The website and its original content, features, and functionality are owned by Terafence Limited and are protected by international copyright, trademark, patent, trade secret, and other intellectual property or proprietary rights laws.</p>
                     
-                    <p>Our trademarks and trade dress may not be used in connection with any product or service without the prior written consent of Terafence Private Limited.</p>
+                    <p>Our trademarks and trade dress may not be used in connection with any product or service without the prior written consent of Terafence Limited.</p>
                   </div>
                 </div>
               </details>
@@ -289,7 +289,7 @@ export default function TermsOfUsePage() {
                 </summary>
                 <div className="p-5 bg-slate-50 border-t border-slate-200">
                   <div className="text-slate-700 space-y-4">
-                    <p>You agree to defend, indemnify, and hold harmless Terafence Private Limited, its parent, subsidiaries, affiliates, and their respective directors, officers, employees, contractors, agents, suppliers, licensors, successors, and assigns from and against any claims, liabilities, damages, judgments, awards, losses, costs, expenses, or fees (including reasonable attorneys' fees) arising out of or relating to your violation of these Terms of Use or your use of the website.</p>
+                    <p>You agree to defend, indemnify, and hold harmless Terafence Limited, its parent, subsidiaries, affiliates, and their respective directors, officers, employees, contractors, agents, suppliers, licensors, successors, and assigns from and against any claims, liabilities, damages, judgments, awards, losses, costs, expenses, or fees (including reasonable attorneys' fees) arising out of or relating to your violation of these Terms of Use or your use of the website.</p>
                   </div>
                 </div>
               </details>
@@ -309,7 +309,7 @@ export default function TermsOfUsePage() {
                     <p>If you have any questions about these Terms of Use, please contact us at:</p>
                     
                     <div className="bg-white p-4 border border-slate-200 rounded-md">
-                      <p className="font-medium">Terafence Private Limited</p>
+                      <p className="font-medium">Terafence Limited</p>
                       <p>Email: info@terafence.in</p>
                       <p>Address: 209, Suncity Success Tower, Sector-65, Gurgaon, Haryana-122005, India</p>
                     </div>
@@ -356,7 +356,7 @@ export default function TermsOfUsePage() {
                 <h3 className="text-lg font-semibold text-slate-800 mb-2">Legal Disclaimer</h3>
                 <p className="text-slate-600 text-sm">
                   This Terms of Use document is provided for general informational purposes only and does not constitute legal advice. 
-                  Terafence Private Limited makes no representations or warranties regarding the accuracy or completeness of these terms or their 
+                  Terafence Limited makes no representations or warranties regarding the accuracy or completeness of these terms or their 
                   suitability for any specific context. Users are advised to consult with qualified legal counsel to ensure 
                   compliance with all applicable laws and regulations relevant to their specific circumstances.
                 </p>

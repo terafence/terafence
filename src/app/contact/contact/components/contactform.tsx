@@ -1402,7 +1402,7 @@ export default function ContactForm() {
                         <AlertCircle className="h-3 w-3" />
                       </span>
                       <span>
-                        Terafence Private Limited needs the contact information you provide
+                        Terafence Limited needs the contact information you provide
                         to send you updates about our products and services. You may
                         unsubscribe at any time from these communications.
                       </span>

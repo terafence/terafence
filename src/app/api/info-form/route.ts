@@ -178,7 +178,7 @@ export async function POST(req: NextRequest) {
           </div>
           
           <div class="footer">
-            <p class="footer-text"><strong>Terafence Private Limited</strong></p>
+            <p class="footer-text"><strong>Terafence Limited</strong></p>
             <p class="footer-text">209, Suncity Success Tower, Sector-65, Gurgaon-122005, Haryana, India</p>
             <p class="footer-text">
               <a href="mailto:info@terafence.in" style="color: #2563eb; text-decoration: none;">info@terafence.in</a>
@@ -336,7 +336,7 @@ export async function POST(req: NextRequest) {
           </div>
           
           <div class="footer">
-            <p class="footer-text"><strong>Terafence Private Limited</strong></p>
+            <p class="footer-text"><strong>Terafence Limited</strong></p>
             <p class="footer-text">209, Suncity Success Tower, Sector-65, Gurgaon-122005, Haryana, India</p>
             <p class="footer-text">
               <a href="mailto:info@terafence.in" style="color: #2563eb; text-decoration: none;">info@terafence.in</a>
@@ -363,7 +363,7 @@ export async function POST(req: NextRequest) {
     await transporter.sendMail({
       from: process.env.EMAIL_FROM,
       to: email, // Send to the user's email
-      subject: `Thank You for Your Request - Terafence Private Limited`,
+      subject: `Thank You for Your Request - Terafence Limited`,
       html: userEmailContent,
     });
 

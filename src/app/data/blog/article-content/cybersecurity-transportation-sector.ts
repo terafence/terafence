@@ -1,6 +1,6 @@
 export const articleContent = {
   title: "Cybersecurity Challenges in the Integrated Transportation Sector",
-  author: "Terafence Private Limited",
+  author: "Terafence Limited",
   publishDate: "2025-05-29",
   
   // Image captions for each article image

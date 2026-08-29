@@ -1,6 +1,6 @@
 export const articleContent = {
   title: "Marine Cyber Security: Why It's Time to Deploy Data Diode at the Network Edge",
-  author: "Terafence Private Limited",
+  author: "Terafence Limited",
   publishDate: "2025-07-22",
   
   // Image captions for each article image

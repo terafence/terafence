@@ -93,7 +93,7 @@ primaryCta: "Book a Consultation",
 secondaryCta: "Our Approach",
 accentColors: { from: "emerald-400", to: "blue-400" },
 stats: [
-{ value: "200+", label: "Enterprises Advised" },
+{ value: "50+", label: "Enterprises Advised" },
 { value: "40%", label: "Average IT Cost Optimization" },
 { value: "99.9%", label: "Migration Success Rate" }
 ],
@@ -212,7 +212,7 @@ challenge:
 solution:
 "Terafence delivered an enterprise transformation roadmap including cloud migration strategy, unified data platforms and modern digital workplace architecture enabling standardized IT operations across global plants.",
 results: [
-{ metric: "40+", label: "Global Facilities Modernized" },
+{ metric: "10+", label: "Global Facilities Modernized" },
 { metric: "$20M+", label: "IT Cost Savings Identified" },
 { metric: "60%", label: "Faster System Integration" },
 { metric: "3 Year", label: "Transformation Roadmap Delivered" }
@@ -525,9 +525,9 @@ primaryCta: "Network Assessment",
 secondaryCta: "View Solutions",
 accentColors: { from: "amber-400", to: "orange-400" },
 stats: [
-{ value: "50K+", label: "Endpoints Connected" },
+{ value: "30K+", label: "Endpoints Connected" },
 { value: "99.99%", label: "Network Availability" },
-{ value: "500+", label: "Global Sites Deployed" }
+{ value: "10+", label: "Global Sites Deployed" }
 ],
 image: "/images/services/network/hero.png"
 },
@@ -644,7 +644,7 @@ challenge:
 solution:
 "Terafence deployed a global SD WAN platform integrating enterprise firewalls and centralized network monitoring.",
 results: [
-{ metric: "120+", label: "Distribution Centers Connected" },
+{ metric: "20+", label: "Distribution Centers Connected" },
 { metric: "65%", label: "Latency Reduction" },
 { metric: "99.99%", label: "Network Availability" },
 { metric: "Real Time", label: "Operational Visibility" }
@@ -813,7 +813,7 @@ primaryCta: "Integration Workshop",
 secondaryCta: "SIAM Framework",
 accentColors: { from: "teal-400", to: "violet-400" },
 stats: [
-{ value: "50+", label: "Vendors Integrated" },
+{ value: "30+", label: "Vendors Integrated" },
 { value: "1M+", label: "Tickets Managed" },
 { value: "250+", label: "ITIL Certified Experts" }
 ],

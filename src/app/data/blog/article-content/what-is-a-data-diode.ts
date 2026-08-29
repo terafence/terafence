@@ -1,6 +1,6 @@
 export const articleContent = {
   title: "What is a Data Diode?",
-  author: "Terafence Private Limited",
+  author: "Terafence Limited",
   publishDate: "2024-01-11",
   
   // Structured content sections

@@ -235,7 +235,7 @@ export default function InfoForm({ onClose, onSuccess, title }: InfoFormProps) {
             transition={{ delay: 0.2 }}
             className="w-full mt-auto pt-6 border-t border-gray-100 text-center"
           >
-            <p className="text-sm text-gray-500 font-medium">Terafence Private Limited</p>
+            <p className="text-sm text-gray-500 font-medium">Terafence Limited</p>
             <p className="text-sm text-gray-500 mt-1">209, Suncity Success Tower, Sector-65, Gurugram, Haryana-122005, India</p>
           </motion.div>
         </div>
@@ -420,7 +420,7 @@ export default function InfoForm({ onClose, onSuccess, title }: InfoFormProps) {
       </div>
 
       <div className="mt-8 border-t border-gray-100 pt-6 text-center text-sm text-gray-500">
-        <p>Terafence Private Limited</p>
+        <p>Terafence Limited</p>
         <p>209, Suncity Success Tower, Sector-65, Gurugram, Haryana-122005, India</p>
         <p className="mt-2">
           <a href="mailto:info@terafence.in" className="text-blue-600 hover:underline">

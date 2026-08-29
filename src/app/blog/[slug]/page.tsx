@@ -63,9 +63,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: `${post.title} | Terafence Knowledge Vault`,
     description: post.excerpt,
     keywords: post.tags.join(', '),
-    authors: [{ name: 'Terafence Private Limited' }],
-    creator: 'Terafence Private Limited',
-    publisher: 'Terafence Private Limited',
+    authors: [{ name: 'Terafence Limited' }],
+    creator: 'Terafence Limited',
+    publisher: 'Terafence Limited',
     openGraph: {
       title: post.title,
       description: post.excerpt,

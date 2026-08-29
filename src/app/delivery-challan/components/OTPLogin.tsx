@@ -137,7 +137,7 @@ export default function OTPLogin({ onAuthenticated }: OTPLoginProps) {
               Delivery Challan Portal
             </h1>
             <p className="text-sm text-slate-500 mt-1">
-              Terafence Private Limited
+              Terafence Limited
             </p>
           </div>
 

@@ -62,7 +62,7 @@ export default function PrivacyPolicyPage() {
           {/* Introduction */}
           <div className="mb-10">
             <p className="text-lg leading-relaxed text-slate-700 mb-6">
-              At Terafence Private Limited, we respect your privacy and are committed to protecting your personal data. 
+              At Terafence Limited, we respect your privacy and are committed to protecting your personal data. 
               This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website.
             </p>
             
@@ -156,7 +156,7 @@ export default function PrivacyPolicyPage() {
                       <li>With your consent</li>
                       <li>To comply with any court order, law, or legal process</li>
                       <li>To enforce our terms of use and other agreements</li>
-                      <li>If we believe disclosure is necessary to protect the rights, property, or safety of Terafence Private Limited, our customers, or others</li>
+                      <li>If we believe disclosure is necessary to protect the rights, property, or safety of Terafence Limited, our customers, or others</li>
                     </ul>
                   </div>
                 </div>
@@ -281,7 +281,7 @@ export default function PrivacyPolicyPage() {
                   <div className="text-slate-700 space-y-4">
                     <p>To ask questions or comment about this Privacy Policy and our privacy practices, contact us at:</p>
                     <div className="bg-white p-4 border border-slate-200 rounded-md">
-                    <p className="font-medium">Terafence Private Limited</p>
+                    <p className="font-medium">Terafence Limited</p>
                       <p>Email: info@terafence.in</p>
                       <p>Address: 209, Suncity Success Tower, Sector-65, Gurgaon, Haryana-122005, India</p>
                     </div>

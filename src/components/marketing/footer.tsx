@@ -267,7 +267,7 @@ const Footer: React.FC = () => {
         <div className="py-6">
           <FadeInContainer delay={5} className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <p className="text-sm text-slate-400 order-2 sm:order-1 text-center sm:text-left">
-              &copy; {currentYear} Terafence Private Limited. All rights reserved.
+              &copy; {currentYear} Terafence Limited. All rights reserved.
             </p>
             
             <div className="flex flex-wrap items-center justify-center sm:justify-end gap-4 text-sm text-slate-400 order-1 sm:order-2">

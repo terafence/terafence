@@ -54,7 +54,7 @@ export default function MapAddress() {
           >
             <h3 className="text-2xl font-bold text-blue-700 mb-6 flex items-center gap-2">
               <Building className="h-6 w-6" />
-              &nbsp; Terafence Private Limited
+              &nbsp; Terafence Limited
             </h3>
             <div className="space-y-6 text-gray-700">
               <div className="flex items-start gap-4">
@@ -134,7 +134,7 @@ export default function MapAddress() {
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Terafence Private Limited"
+              title="Terafence Limited"
               className="w-full h-full"
             />
           </motion.div>

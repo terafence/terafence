@@ -1,6 +1,6 @@
 export const articleContent = {
   title: "Challenges to OT Cybersecurity",
-  author: "Terafence Private Limited",
+  author: "Terafence Limited",
   publishDate: "2025-05-21",
   
   // Image captions for each article image

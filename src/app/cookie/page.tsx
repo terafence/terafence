@@ -63,7 +63,7 @@ export default function CookiePolicyPage() {
           {/* Introduction */}
           <div className="mb-10">
             <p className="text-lg leading-relaxed text-slate-700 mb-6">
-              At Terafence Private Limited, we use cookies and similar technologies to enhance your browsing experience, 
+              At Terafence Limited, we use cookies and similar technologies to enhance your browsing experience, 
               analyze site traffic, personalize content, and serve targeted advertisements. This Cookie Policy 
               explains how we use cookies, your choices regarding cookies, and more information about cookies in general.
             </p>
@@ -328,7 +328,7 @@ export default function CookiePolicyPage() {
                     <p>If you have any questions about our Cookie Policy, please contact us at:</p>
                     
                     <div className="bg-white p-4 border border-slate-200 rounded-md">
-                      <p className="font-medium">Terafence Private Limited</p>
+                      <p className="font-medium">Terafence Limited</p>
                       <p>Email: info@terafence.in</p>
                       <p>Address: 209, Suncity Success Tower, Sector-65, Gurgaon, Haryana-122005, India</p>
                     </div>

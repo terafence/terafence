@@ -104,7 +104,7 @@ const ChallanPreview = forwardRef<HTMLDivElement, ChallanPreviewProps>(
               <td colSpan={4} style={{ border: b, fontWeight: "bold", padding: "4px 8px", verticalAlign: "top" }}>
                 {data.organizationName || placeholder("Organization Name")}
               </td>
-              <td colSpan={4} style={{ border: b, fontWeight: "bold", padding: "4px 8px" }}>Terafence Private Limited</td>
+              <td colSpan={4} style={{ border: b, fontWeight: "bold", padding: "4px 8px" }}>Terafence Limited</td>
             </tr>
             <tr>
               <td colSpan={4} rowSpan={2} style={{ border: b, fontWeight: "bold", padding: "4px 8px", verticalAlign: "top", lineHeight: "1.4", whiteSpace: "pre-wrap" }}>
@@ -229,7 +229,7 @@ const ChallanPreview = forwardRef<HTMLDivElement, ChallanPreviewProps>(
                 </div>
               </td>
               <td colSpan={4} style={{ border: b, fontWeight: "bold", padding: "4px 8px", textAlign: "center" }}>
-                For Terafence Private Limited
+                For Terafence Limited
               </td>
             </tr>
 

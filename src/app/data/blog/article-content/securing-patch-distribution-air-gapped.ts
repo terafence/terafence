@@ -1,6 +1,6 @@
 export const articleContent = {
   title: "Securing the Patch and Software Distribution for Air-Gapped Networks",
-  author: "Terafence Private Limited",
+  author: "Terafence Limited",
   publishDate: "2023-12-22",
   
   imageCaptions: [
@@ -41,7 +41,7 @@ Maintaining system integrity, security posture, and operational continuity relie
     {
       id: "terafence-solution",
       title: "Introducing Terafence: Bridging the Isolation with Secure Distribution",
-      content: `Terafence Private Limited specializes in secure data transfer solutions designed specifically for air-gapped and high-security environments. We focus on enabling controlled, unidirectional, and secure transfer of software packages and patches from a trusted external environment into an air-gapped zone—without ever breaking the gap.`,
+      content: `Terafence Limited specializes in secure data transfer solutions designed specifically for air-gapped and high-security environments. We focus on enabling controlled, unidirectional, and secure transfer of software packages and patches from a trusted external environment into an air-gapped zone—without ever breaking the gap.`,
       hasImage: true,
       imageIndex: 4
     },

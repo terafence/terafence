@@ -1,6 +1,6 @@
 export const articleContent = {
   title: "Cybersecurity Challenges in the Pharmaceutical Industry and How Terafence Solves Them",
-  author: "Terafence Private Limited",
+  author: "Terafence Limited",
   publishDate: "2025-06-05",
   
   // Image captions for each article image

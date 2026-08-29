@@ -1,6 +1,6 @@
 export const articleContent = {
   title: "Securing Syslogs from OT to IT",
-  author: "Terafence Private Limited",
+  author: "Terafence Limited",
   publishDate: "2025-06-28",
   
   // Image captions for each article image

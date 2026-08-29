@@ -34,7 +34,7 @@ export async function POST(req: NextRequest) {
       html: `
         <div style="font-family:'Segoe UI',Arial,sans-serif;max-width:480px;margin:0 auto;padding:32px;background:#fff;">
           <div style="text-align:center;margin-bottom:24px;">
-            <h2 style="color:#1a1a2e;margin:0;font-size:20px;">Terafence Private Limited</h2>
+            <h2 style="color:#1a1a2e;margin:0;font-size:20px;">Terafence Limited</h2>
             <p style="color:#64748b;margin:4px 0 0;font-size:13px;">Delivery Challan Portal</p>
           </div>
           <div style="background:#f8fafc;border-radius:12px;padding:24px;text-align:center;border:1px solid #e2e8f0;">

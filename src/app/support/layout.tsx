@@ -1,7 +1,7 @@
 import { Toaster } from '@/components/ui/toaster';
 import type { Metadata } from 'next';
 export const metadata: Metadata = {
-  title: 'Support Center by Terafence Private Limited',
+  title: 'Support Center by Terafence Limited',
   description: 'Customer support portal for Terafence customers',
 };
 

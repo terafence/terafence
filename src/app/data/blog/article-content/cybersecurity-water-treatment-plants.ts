@@ -1,6 +1,6 @@
 export const articleContent = {
   title: "Cybersecurity Challenges in Water Treatment Plants and How Terafence Solves Them",
-  author: "Terafence Private Limited",
+  author: "Terafence Limited",
   publishDate: "2025-06-13",
   
   // Image captions for each article image
