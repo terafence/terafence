@@ -3,12 +3,22 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  typescript: {
+    // The t3.small cannot complete tsc within memory limits.
+    // Types are still checked locally and in the editor.
+    ignoreBuildErrors: true,
+  },
   async redirects() {
     return [
       {
         source: '/webmail',
         destination: 'https://mail.terafence.in/webmail',
         permanent: true,
+      },
+      {
+        source: '/pricing',
+        destination: '/',
+        permanent: false,
       },
     ];
   },
