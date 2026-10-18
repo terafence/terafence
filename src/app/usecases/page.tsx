@@ -85,8 +85,7 @@ const useCases = [
 ]
 
 const certifications = [
-  "IEC 62443-4-2, SL-2",
-  "TASL",
+  "IEC 62443-4-2, SL-2",
   "SSE",
   "7 Layers",
   "Horizon Security"

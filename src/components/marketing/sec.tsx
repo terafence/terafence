@@ -15,15 +15,7 @@ interface Certification {
 }
 
 const SecurityCertifications = () => {
-  const certifications: Certification[] = [
-    {
-      id: "tasl",
-      image: "/images/tassel.png",
-      title: "TASL",
-      category: "Tata Advanced Systems Limited, India",
-      description: "Tata Advanced System Limited (TASL), India is an indian recognized authority that conducts rigorous assessments of application security.",
-      features: ["Leading Cybersecurity Testing Authority in India", "Certified the Core Capabilities of our device", "Evaluated the device core principle"],
-    },
+  const certifications: Certification[] = [
     {
       id: "sse",
       image: "/images/sse.png",
@@ -58,7 +50,7 @@ const SecurityCertifications = () => {
     },
   ];
 
-  const [activeTab, setActiveTab] = useState("tasl");
+  const [activeTab, setActiveTab] = useState("sse");
   const activeCertification = certifications.find(cert => cert.id === activeTab) || certifications[0];
 
   return (

@@ -72,7 +72,7 @@ Risk-free monitoring capabilities allow outbound telemetry from CCTV systems, ma
 
 Protocol flexibility ensures seamless connectivity between legacy SCADA systems and modern IoT devices without compromising security. The solution works with existing protocols and infrastructure, eliminating the need for costly system replacements while dramatically improving security posture.
 
-Regulatory compliance is built into the design, with certifications including EMI/EMC, RoHS, FCC, IEC-62443-4-2, SL-2, and TASL standards. This comprehensive compliance framework ensures that implementations meet the most stringent industry requirements.
+Regulatory compliance is built into the design, with certifications including EMI/EMC, RoHS, FCC, and IEC-62443-4-2 SL-2 standards. This comprehensive compliance framework ensures that implementations meet the most stringent industry requirements.
 
 Zero misconfiguration risk eliminates human error factors that plague traditional security solutions. Unlike firewalls that can be reverse-configured for bidirectional use, Terafence hardware cannot be reconfigured to allow reverse data flow, providing absolute security guarantees.`,
       hasImage: true,
@@ -121,7 +121,7 @@ IEC-62443-4-2 compliance ensures that implementations meet industrial cybersecur
 
 Security Level 2 (SL-2) certification provides protection against intentional violation using simple means with low resources, generic skills, and low motivation. This level of protection is appropriate for most supply chain applications where the threat model includes opportunistic attackers and automated malware.
 
-TASL (Technology Assurance Security Level) certification demonstrates that the solution meets defense industry requirements for cybersecurity in critical applications. This certification is particularly relevant for supply chains that support defense contractors and critical infrastructure providers.
+
 
 EMI/EMC compliance ensures that the hardware operates reliably in industrial electromagnetic environments without causing or suffering from electromagnetic interference. This compliance is essential for deployment in manufacturing and industrial environments where electromagnetic compatibility is critical.
 
